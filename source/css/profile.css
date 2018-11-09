@@ -1,0 +1,30 @@
+#profile{
+    grid-column: 1/11;
+    grid-row: 2/10;
+}
+#profileImg{
+    height: 40%;
+    text-align: center;
+    padding: 1em;
+}
+#profileImg img{
+    height: 150px;
+    width: 150px;
+}
+#profileImg form{
+    margin-top: 2%;
+}
+#profileData{
+    height: 60%;
+}
+@media (min-width: 800px){
+
+}
+
+@media (max-width: 800px){
+
+}
+
+@media (max-width: 450px){
+
+}
