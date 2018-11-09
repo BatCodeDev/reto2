@@ -124,7 +124,7 @@
     		$password = $_POST["password"];
 			if ($password === selectPasswordLogin($dbh, $user)) {
 				$_SESSION["user"] = selectIdLogin($dbh, $user);
-				echo $_SESSION["user"];
+				header("Location: index.php");
 			}else{
 				echo "<p>NO</p>";
 			}
