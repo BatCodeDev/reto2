@@ -13,7 +13,7 @@
             <div class="navLinks">
                 <!--<img src="img/profile.png">-->
                 <img id="userImg" src="<?=$_SESSION['img']?>">
-                <a href="profile.php?id=<?=$user?>"><?=$_SESSION['user']?></a>
+                <a href="profile.php?id=<?=$user?>"><?=$_SESSION['userName']?></a>
             </div>
             <?php
         }else{
