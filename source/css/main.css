@@ -38,6 +38,7 @@ footer{
     right: 0;
     background: yellow;
     transition: width .4s;
+    z-index: 2;
 }
 .toggle{
     width: 60% !important;
@@ -93,8 +94,13 @@ footer{
 .trigger>div:nth-of-type(3){
     transform: translateY(-18px) rotate(45deg);
 }
-.verticalThird{
-    height: 33.33%;
+.divCategory{
+    height: 30%;
+    width: 100%;
+    padding: .5em;
+}
+.verticalHalf{
+    height: 50%;
     width: 100%;
     padding: .5em;
 }
@@ -147,8 +153,8 @@ h2{
     padding: .5em;
 }
 .category{
-    height: 30% !important;
-    width: 5em !important;
+    height: 25%;
+    width: 5em ;
     background: lightblue;
     text-align: center;
 }
@@ -172,6 +178,10 @@ h2{
     .verticalTxt{
         width: 80% !important;
     }
+    #questions{
+        display: flex;
+        width: 80%;
+    }
 }
 @media (max-width: 800px){
     #divLogo{
@@ -183,6 +193,12 @@ h2{
     #divSearch {
         width: 50%;
         margin: 3% 0;
+    }
+    #questions{
+        height: 60%;
+    }
+    .divCategory {
+        height: 20%;
     }
 }
 @media (max-width: 450px){
@@ -197,5 +213,8 @@ h2{
     }
     #divSearch{    
         margin: 5% 0 !important;
+    }
+    .category {
+        height: 40% !important;
     }
 }
