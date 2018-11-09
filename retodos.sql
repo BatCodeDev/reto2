@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-11-2018 a las 12:29:13
+-- Tiempo de generación: 06-11-2018 a las 12:20:31
 -- Versión del servidor: 10.1.35-MariaDB
 -- Versión de PHP: 7.2.9
 
@@ -74,6 +74,19 @@ CREATE TABLE `favourite` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `login`
+--
+
+CREATE TABLE `login` (
+  `id` int(11) NOT NULL,
+  `user` varchar(20) NOT NULL,
+  `pass` varchar(20) NOT NULL,
+  `id_profile` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `profile`
 --
 
@@ -82,9 +95,7 @@ CREATE TABLE `profile` (
   `photo` varchar(30) NOT NULL,
   `name` varchar(30) NOT NULL,
   `surname` varchar(30) NOT NULL,
-  `email` varchar(30) NOT NULL,
-  `user` varchar(20) NOT NULL,
-  `pass` varchar(20) NOT NULL
+  `email` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -135,6 +146,13 @@ ALTER TABLE `favourite`
   ADD KEY `fk_answer_favourite` (`id_answer`);
 
 --
+-- Indices de la tabla `login`
+--
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_login_profile` (`id_profile`);
+
+--
 -- Indices de la tabla `profile`
 --
 ALTER TABLE `profile`
@@ -168,6 +186,12 @@ ALTER TABLE `archive`
 -- AUTO_INCREMENT de la tabla `category`
 --
 ALTER TABLE `category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `login`
+--
+ALTER TABLE `login`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -205,6 +229,12 @@ ALTER TABLE `favourite`
   ADD CONSTRAINT `fk_answer_favourite` FOREIGN KEY (`id_answer`) REFERENCES `answer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_profile_favourite` FOREIGN KEY (`id_profile`) REFERENCES `profile` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_question_favourite` FOREIGN KEY (`id_question`) REFERENCES `question` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `login`
+--
+ALTER TABLE `login`
+  ADD CONSTRAINT `fk_login_profile` FOREIGN KEY (`id_profile`) REFERENCES `profile` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `question`
