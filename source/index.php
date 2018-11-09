@@ -1,4 +1,7 @@
-<?php 
+<?php
+    include_once "server/questionDB.php";
+    include_once "server/favouriteDB.php";
+    include_once "server/categoryDB.php";
     session_start();
     $userImg = "img/alexddo.png";
 ?>
@@ -88,53 +91,46 @@
                 <div class="verticalHeader">
                     <h2>Categorias:</h2>
                 </div>
-                <div class="verticalTxt">                    
-                    
-                    <div class="category">
-                        <div class="cetegoryDecoration">
-                            <div class="cDecoration"></div>
-                        </div>
-                        Problema
-                    </div>                    
-                    <div class="category">
-                        <div class="cetegoryDecoration">
-                            <div class="cDecoration"></div>
-                        </div>
-                        dsfndes
-                    </div>                    
-                    <div class="category">
-                        <div class="cetegoryDecoration">
-                            <div class="cDecoration"></div>
-                        </div>
-                        wrewt
-                    </div>                    
-                    <div class="category">
-                        <div class="cetegoryDecoration">
-                            <div class="cDecoration"></div>
-                        </div>
-                        rthrejrm
-                    </div>                    
-                    <div class="category">
-                        <div class="cetegoryDecoration">
-                            <div class="cDecoration"></div>
-                        </div>
-                        werg rwgej
-                    </div>
-            </div>
+                <div class="verticalTxt">
+                    <?php
+                        $resul = selectAllCategory();
+                            foreach ($resul as $row){
+                                echo "<div class='category'>
+                                        <div class='cetegoryDecoration'>
+                                        <div class='cDecoration'></div>
+                                        </div>".$row["name"]."</div>";
+                            }
+                    ?>
+                </div>
             </div>
             <div class="verticalThird">
                 <div class="verticalHeader">
                     <h2>Preguntas recientes:</h2>
                 </div>
-                <div class="verticalTxt">                    
+                <div class="verticalTxt">
+                    <?php
+                        $resul = selectRecientQuestion();
+                        foreach ($resul as $row){
+                            echo $row["header"]." ".$row["date"].PHP_EOL."<br>";
+                        }
+                    ?>
 
                 </div>
             </div>
             <div class="verticalThird">
                 <div class="verticalHeader">
                     <h2>Preguntas destacadas:</h2>
+                    <?php
+                        $resulF = selectFavouriteQuestion();
+                        foreach ($resulF as $rowF){
+                            $resulF = selectQuestionById($rowF["id_question"]);
+                            foreach ($resulF as $rowQ){
+                                echo $rowQ["header"]." ".$rowQ["date"].PHP_EOL."<br>";
+                            }
+                        }
+                    ?>
                 </div>
-                <div class="verticalTxt">                    
+                <div class="verticalTxt">
 
                 </div>
             </div>
