@@ -1,0 +1,220 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;    
+}
+header{        
+    display: flex;
+    padding: 0.5em;        
+}
+header{
+    grid-column: 1 / 11;
+}
+#wrapper{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+#content{
+    grid-column: 1 / 11;
+    grid-row: 2 / 10;
+}
+footer{
+    grid-column: 1 / 11;        
+}
+#fullfade{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: black;
+    opacity: 0.5;
+    display: none;
+}
+#navBar{
+    position: fixed;
+    height: 100%;
+    width: 0;
+    right: 0;
+    background: yellow;
+    transition: width .4s;
+    z-index: 2;
+}
+.toggle{
+    width: 60% !important;
+}
+#navTrigger{
+    align-self: right;
+}
+#divLogo{
+    width: 5%;
+}
+#divLogo img{
+    height: auto;
+    width: 74%;
+}
+#divSearch{
+    width: 50%;
+    margin: 1% 0;
+}
+#divSearch input {
+    border: 1px solid;
+    width: 150px;
+}
+#divSearch form {
+    display: flex;
+}
+#search{
+    width: 20%;
+    height: 2em;
+    background: url("../img/search2.png")no-repeat 50% 50%;
+    border: 0;
+}
+#divNavTrigger{
+    width: 82.19px;
+    height: 82.19px;
+    padding: 3% 20px 3% 20px;
+    position: absolute;
+    right: 0;
+    z-index: 2;
+}
+.divNavAxis{
+    width: 100%;
+    height: 3px;
+    background: black;
+    margin-bottom: 30%;
+    transition: transform .4s;
+}
+.trigger>div:first-of-type{
+    transform: translateY(13px)rotate(45deg);
+}
+.trigger>div:nth-of-type(2){
+    transform: translateY(-3px) rotate(-45deg);
+}
+.trigger>div:nth-of-type(3){
+    transform: translateY(-18px) rotate(45deg);
+}
+.divCategory{
+    height: 30%;
+    width: 100%;
+    padding: .5em;
+}
+.verticalHalf{
+    height: 50%;
+    width: 100%;
+    padding: .5em;
+}
+.verticalHeader{
+    height: 10%;
+}
+.verticalTxt{
+    height: 90%;
+    padding: 1em .5em;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+h2{
+    margin: 0;
+}
+#navBarHeader{        
+    height: 10%;
+    background: lightblue;
+}
+#navBarContent{
+    height: 90%;
+    background: lightgreen;
+}
+#navBarHeaderTxt{
+    width: 70%;    
+    height: 100%;
+    padding: 10% 20%;
+}
+#navBarContent a{
+    display: block;
+    width: 80%;
+    padding: .5em;
+    float: left;
+    color: black;
+    text-decoration: none;
+    margin-top: 2%;
+}
+#navBarContent img{
+    height: auto;
+    width: 20%;
+    float: left;    
+}
+#userImg{
+    border-radius: 50%;
+}
+.navLinks{        
+    width: 100%;
+    height: 10%;
+    padding: .5em;
+}
+.category{
+    height: 25%;
+    width: 5em ;
+    background: lightblue;
+    text-align: center;
+}
+.cetegoryDecoration{
+    height: 50%;
+    width: 100%;
+    padding: 9%;
+}
+.cDecoration{
+    background: white;
+    height: 100%;
+    border-radius: 10%;
+}
+@media (min-width: 800px){
+    #divNavTrigger{
+        display: none;
+    }
+    #navBar{
+        width: 20%;
+    }
+    .verticalTxt{
+        width: 80% !important;
+    }
+    #questions{
+        display: flex;
+        width: 80%;
+    }
+}
+@media (max-width: 800px){
+    #divLogo{
+        width: 20%;
+    }
+    #divLogo img{    
+        width: 50% !important;
+    }
+    #divSearch {
+        width: 50%;
+        margin: 3% 0;
+    }
+    #questions{
+        height: 60%;
+    }
+    .divCategory {
+        height: 20%;
+    }
+}
+@media (max-width: 450px){
+    #divSearch input{
+        width: 125px !important;
+    }
+    #divLogo{
+        width: 30%;
+    }
+    #divLogo img{    
+        width: 50% !important;
+    }
+    #divSearch{    
+        margin: 5% 0 !important;
+    }
+    .category {
+        height: 40% !important;
+    }
+}
