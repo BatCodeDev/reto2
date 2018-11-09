@@ -35,7 +35,12 @@ $con = connect();
                     <button type="submit">Aceptar</button>
                 </form>
             </div>
-            <div id="profileData"></div>
+            <div id="profileData">
+                <form action="">
+                    <input type="text">
+                    <input type="text">
+                </form>
+            </div>
         </div>
     </div>
 </body>
