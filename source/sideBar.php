@@ -1,4 +1,4 @@
-<?php $user = "1"; ?>
+<?php session_start(); ?>
 <div id="fullfade" onclick="toggleNavbar();"></div>
 <nav id="navBar">
     <div id="navBarHeader">
@@ -11,17 +11,28 @@
         if(isset($_SESSION['user'])){
             ?>
             <div class="navLinks">
-                <!--<img src="img/profile.png">-->
-                <img id="userImg" src="<?=$_SESSION['img']?>">
-                <a href="profile.php?id=<?=$user?>"><?=$_SESSION['userName']?></a>
+                <?php
+                    if($_SESSION["user"]["userPhoto"] != "") {
+                        ?>
+                        <img id="userImg" src="<?= $_SESSION['user']['userPhoto'] ?>">
+                <?php
+                    }else {
+                ?>
+                        <img id="userImg" src="img/default.png">
+                        <?php
+                    }
+                ?>
+                <a href="profile.php?id=<?=$_SESSION['user']["userId"]?>"><?=$_SESSION['user']["userName"]?></a>
+                <form action="logOut.php"><button type="submit">Cerrar Session</button></form>
             </div>
             <?php
         }else{
+            print_r($_SESSION["user"]);
             ?>
             <div class="navLinks">
                 <!--<img src="img/profile.png">-->
                 <img id="loginImg" src="img/login.png">
-                <a href="profile.php">Login/Registro</a>
+                <a href="loginRegistry.php">Login/Registro</a>
             </div>
             <?php
         }

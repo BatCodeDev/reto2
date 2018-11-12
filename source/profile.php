@@ -1,9 +1,7 @@
 <?php
-session_start();
 include("server/connection.php");
 include ("sideBar.php");
 $con = connect();
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,7 +24,7 @@ $con = connect();
         <div id="profile">
             <div id="profileImg">
                 <?php if(isset($_SESSION['user'])){ ?>
-                    <img src="<?=$_SESSION['img']?>" alt="">
+                    <img src="<?=$_SESSION['user']["userPhoto"]?>" alt="">
                 <?php }else{ ?>
                     <img src="img/default.png" alt="">
                 <?php } ?>

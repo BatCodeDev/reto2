@@ -3,7 +3,7 @@
 	include_once "server/profileDB.php";
 
 	session_start();
-	$_SESSION["user"] = array ("userId" => "", "userName" => "", "userPhoto" => "");
+
 ?>
 
 <html>
@@ -120,6 +120,7 @@
 <?php
 		//VERIFY LOGIN
 		if(isset($_POST["login"])){
+            $_SESSION["user"] = array ("userId" => "", "userName" => "", "userPhoto" => "");
    			$user = $_POST["user"];
     		$password = $_POST["password"];
 			if ($password === selectPasswordProfile($user)) {
