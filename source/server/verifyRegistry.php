@@ -3,7 +3,6 @@
      include_once "profileDB.php";
      
     if (isset($_POST["email"])) {
-        $dbh = connect();
         $email = $_POST["email"];
         $user = $_POST["user"];
         $password = $_POST["password"];
@@ -11,9 +10,9 @@
         $surname = $_POST["surname"];
 
         //Comprobation
-        if(selectVerifyEmailProfile($dbh, $email)===null){
-            if (selectIdProfile($dbh, $user)===null) {
-                insertProfile($dbh, $email, $user, $password, $name, $surname);
+        if(selectVerifyEmailProfile($email)===null){
+            if (selectIdProfile($user)===null) {
+                insertProfile($email, $name, $surname, $user, $password);
                 echo "success";
             }else{
                 echo "errorUser";
@@ -21,6 +20,5 @@
         }else{
                 echo "errorEmail";
         }
-        closeConnect($dbh);
     }
 ?>

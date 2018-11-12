@@ -90,6 +90,7 @@
 		//AJAX VERIFY
         function request2server(idForm) {
             var form_data = $("#"+idForm).serialize();
+
             $.ajax({
                 url: "server/verifyRegistry.php",
                data: form_data,
