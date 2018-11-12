@@ -25,7 +25,8 @@
 		return $resul;
 	}
 
-	function selectVerifyEmailProfile($dbh, $email){
+	function selectVerifyEmailProfile($email){
+		$dbh = connect();
 		$data = array("email" => $email);
 		$stmt = $dbh -> prepare("SELECT email from profile where email = :email");
 		$stmt -> execute($data);
@@ -34,6 +35,7 @@
 		while($row = $stmt->fetch()) {
 			$email =  $row['email'];
 		}
+		$dbh = null;
 		return $email;
 	}
 
@@ -53,8 +55,9 @@
 	}
 	
 	//REGISTRY USER
-	function insertProfile($dbh, $email, $name, $surname, $user, $password){
+	function insertProfile($email, $name, $surname, $user, $password){
 		//INSERT PROFILE
+		$dbh = connect();
 		$data = array("email" => $email,  
 						"name" => $name, 
 						"surname" => $surname,
@@ -64,6 +67,7 @@
 		$stmt = $dbh -> prepare("INSERT INTO profile (name, surname, email, user, pass) values (:name, :surname, :email, :user, :password)");
 
 		$stmt -> execute($data);
+		$dbh = null;
 	}
 
 ?>
