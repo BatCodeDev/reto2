@@ -76,7 +76,7 @@ footer{
     padding: 3% 20px 3% 20px;
     position: absolute;
     right: 0;
-    z-index: 2;
+    z-index: 3;
 }
 .divNavAxis{
     width: 100%;
