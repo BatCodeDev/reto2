@@ -58,7 +58,6 @@
 	function insertProfile($email, $name, $surname, $user, $password){
         $dbh = connect();
 		//INSERT PROFILE
-		$dbh = connect();
 		$data = array("email" => $email,  
 						"name" => $name, 
 						"surname" => $surname,

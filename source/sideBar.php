@@ -27,7 +27,6 @@
             </div>
             <?php
         }else{
-            print_r($_SESSION["user"]);
             ?>
             <div class="navLinks">
                 <!--<img src="img/profile.png">-->
