@@ -11,14 +11,10 @@
     <div id="grid">
         <?php 
             include "navBar.php"; 
-            include "sideBar.php"; 
-            print_r($_SESSION["user"]);
+            include "sideBar.php";
             include_once "server/questionDB.php";
             include_once "server/favouriteDB.php";
             include_once "server/categoryDB.php";
-            if(!isset($_SESSION["user"])){
-                header("location: loginRegistry.php");
-            }
             $userImg = "img/alexddo.png";
         ?>
         <div id="content">
