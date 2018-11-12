@@ -1,8 +1,7 @@
 <?php
     include_once "connection.php";
-     include_once "loginRegistryDB.php";
-    
-    
+     include_once "profileDB.php";
+     
     if (isset($_POST["email"])) {
         $dbh = connect();
         $email = $_POST["email"];
@@ -12,9 +11,9 @@
         $surname = $_POST["surname"];
 
         //Comprobation
-        if(selectIdProfile($dbh, $email)===null){
-            if (selectIdLogin($dbh, $user)===null) {
-                insertRegistryUser($dbh, $email, $user, $password, $name, $surname);
+        if(selectVerifyEmailProfile($dbh, $email)===null){
+            if (selectIdProfile($dbh, $user)===null) {
+                insertProfile($dbh, $email, $user, $password, $name, $surname);
                 echo "success";
             }else{
                 echo "errorUser";

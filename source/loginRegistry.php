@@ -1,14 +1,14 @@
 <?php
 	include_once "server/connection.php";
-	include_once "server/loginRegistryDB.php";
+	include_once "server/profileDB.php";
 
 	session_start();
-	$_SESSION["user"] = "";
+	$_SESSION["user"] = array ("userId" => "", "userName" => "", "userPhoto" => "");
 ?>
 
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width">
 	<title>Login</title>
 	<script type="text/javascript" src="src/jquery-3.3.1.js"></script>
 	<style type="text/css">
@@ -95,7 +95,7 @@
                data: form_data,
                type: "POST",
                success: function (data) {
-               		debugger;
+               	debugger;
                    if(data === "success"){
                        $("#errorRegistry").html("Correcto");
                        $("#error").html("");
@@ -119,15 +119,18 @@
 <?php
 		//VERIFY LOGIN
 		if(isset($_POST["login"])){
-			$dbh = connect();
    			$user = $_POST["user"];
     		$password = $_POST["password"];
-			if ($password === selectPasswordLogin($dbh, $user)) {
-				$_SESSION["user"] = selectIdLogin($dbh, $user);
+			if ($password === selectPasswordProfile($user)) {
+				$resul = selectDataProfile(selectIdProfile($user));
+                foreach ($resul as $row){
+                    $_SESSION["user"]["userId"] = $row["id"];
+                    $_SESSION["user"]["userName"] = $row["name"];
+                    $_SESSION["user"]["userPhoto"] = $row["photo"];
+        		}
 				header("Location: index.php");
 			}else{
 				echo "<p>NO</p>";
 			}
-			$dbh = null;
 		}
 ?>
