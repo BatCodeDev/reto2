@@ -1,28 +1,32 @@
 <?php
-	//NO EMAIL DUPLICATE
-	function selectIdLogin($dbh,$user){
-		$data = array("user" => $user);
-		$stmt = $dbh -> prepare("SELECT id from login where user = :user");
-		$stmt -> execute($data);
+	include_once "connection.php";
 
-		$id = null;
-		while($row = $stmt->fetch()) {
-			$id =  $row['id'];
-		}
-		return $id;
+	//SELECT RECIENTE QUESTION TO INDEX
+	function selectRecientQuestion(){
+		$dbh = connect();
+		$stmt = $dbh -> prepare("SELECT * FROM question ORDER BY date DESC LIMIT 3");
+		$stmt -> execute();
+
+		$resul = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		$dbh = null;
+		return $resul;
 	}
 
-	function selectPasswordLogin($dbh, $user){
-		$data = array("user" => $user);
-		$stmt = $dbh -> prepare("SELECT pass from login where user = :user");
+	//SELECT RECIENTE QUESTION TO INDEX
+	function selectQuestionById($id){
+		$dbh = connect();
+		$data = array("id" => $id);
+		$stmt = $dbh -> prepare("SELECT * FROM question where id = :id");
 		$stmt -> execute($data);
 
-		$password = null;
-		while($row = $stmt->fetch()) {
-			$password =  $row['pass'];
-		}
-		return $password;
+		$resul = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		$dbh = null;
+		return $resul;
 	}
+
+
+	/*
+
 
 	function selectIdProfile($dbh, $email){
 
@@ -66,6 +70,6 @@
 
 		$stmt -> execute($data);
 
-	}
+	}*/
 
 ?>
