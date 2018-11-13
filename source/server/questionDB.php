@@ -4,7 +4,7 @@
 	//SELECT RECIENTE QUESTION TO INDEX
 	function selectRecientQuestion(){
 		$dbh = connect();
-		$stmt = $dbh -> prepare("SELECT * FROM question ORDER BY date DESC LIMIT 3");
+		$stmt = $dbh -> prepare("SELECT * FROM question ORDER BY dateQ DESC LIMIT 3");
 		$stmt -> execute();
 
 		$resul = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -24,6 +24,21 @@
 		return $resul;
 	}
 
+	//INSERT QUESTION
+	function insertQuestion($header, $rawData, $date, $idProfile, $idCategory){
+		$dbh = connect();
+		echo $header, $rawData, $date, $idProfile, $idCategory;
+		$data = array("header" => $header,  
+						"rawData" => $rawData, 
+						"dateQ" => $date,
+						"idProfile" => $idProfile,
+						"idCategory" => $idCategory);
+
+		$stmt = $dbh -> prepare("INSERT INTO question (header, raw_data, dateQ, id_profile, id_category) values (:header, :rawData, :dateQ, :idProfile, :idCategory)");
+
+		$stmt -> execute($data);
+		$dbh = null;
+	}
 
 	/*
 

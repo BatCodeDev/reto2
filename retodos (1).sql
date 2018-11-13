@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-11-2018 a las 12:29:13
--- Versión del servidor: 10.1.35-MariaDB
--- Versión de PHP: 7.2.9
+-- Tiempo de generación: 13-11-2018 a las 10:01:28
+-- Versión del servidor: 10.1.26-MariaDB
+-- Versión de PHP: 7.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -58,6 +58,14 @@ CREATE TABLE `category` (
   `name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `category`
+--
+
+INSERT INTO `category` (`id`, `name`) VALUES
+(1, 'java'),
+(2, 'eskere');
+
 -- --------------------------------------------------------
 
 --
@@ -87,6 +95,15 @@ CREATE TABLE `profile` (
   `pass` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `profile`
+--
+
+INSERT INTO `profile` (`id`, `photo`, `name`, `surname`, `email`, `user`, `pass`) VALUES
+(2, '', 'admin', 'admin', 'admin@gmail.com', 'admin', 'admin'),
+(3, '', 'user', 'user', 'user@gmail.com', 'user', 'user'),
+(4, '', 'admino', 'admino', 'admino@gmail.com', 'admino', 'admino');
+
 -- --------------------------------------------------------
 
 --
@@ -97,10 +114,22 @@ CREATE TABLE `question` (
   `id` int(11) NOT NULL,
   `header` varchar(20) NOT NULL,
   `raw_data` varchar(255) NOT NULL,
-  `date` varchar(20) NOT NULL,
+  `dateQ` varchar(20) NOT NULL,
   `id_profile` int(11) NOT NULL,
   `id_category` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `question`
+--
+
+INSERT INTO `question` (`id`, `header`, `raw_data`, `dateQ`, `id_profile`, `id_category`) VALUES
+(2, 'juju', 'jiji', '11-12-2018 13:59:22', 2, 1),
+(3, 'juju', 'jiji', '11-12-2018 14:01:04', 2, 1),
+(4, 'yey', 'yuy', '11-12-2018 14:01:09', 2, 1),
+(5, 'userrr', 'userr', '11-12-2018 14:01:54', 3, 1),
+(6, 'prueba', 'prueba', '11-13-2018 09:22:45', 2, 1),
+(7, 'eskere', 'eskere', '11-13-2018 09:27:02', 2, 2);
 
 --
 -- Índices para tablas volcadas
@@ -168,19 +197,19 @@ ALTER TABLE `archive`
 -- AUTO_INCREMENT de la tabla `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `question`
 --
 ALTER TABLE `question`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas
