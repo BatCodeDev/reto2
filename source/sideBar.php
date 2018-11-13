@@ -9,19 +9,21 @@
     <div id="navBarContent">
         <?php
         if(isset($_SESSION['user'])){
+        ?>
+        <div class="navLinks">
+            <?php
+            if (isset($_SESSION["user"]["userPhoto"])) {
+                if ($_SESSION["user"]["userPhoto"] != "") {
             ?>
-            <div class="navLinks">
-                <?php
-                    if($_SESSION["user"]["userPhoto"] != "") {
-                        ?>
-                        <img id="userImg" src="<?= $_SESSION['user']['userPhoto'] ?>">
-                <?php
-                    }else {
-                ?>
-                        <img id="userImg" src="img/default.png">
-                        <?php
-                    }
-                ?>
+                    <img id="userImg" src="<?= $_SESSION['user']['userPhoto'] ?>">
+            <?php
+                } else {
+            ?>
+                    <img id="userImg" src="img/default.png">
+            <?php
+                }
+            }
+            ?>
                 <a href="profile.php?id=<?=$_SESSION['user']["userId"]?>"><?=$_SESSION['user']["userName"]?></a>
                 <form action="logOut.php"><button type="submit">Cerrar Session</button></form>
             </div>

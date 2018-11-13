@@ -69,5 +69,14 @@
 		$stmt -> execute($data);
         $dbh = null;
 	}
+function updateProfile($id, $name, $surname){
+    $dbh = connect();
+    $data = array("name" => $name,
+        "surname" => $surname,
+        "id" => $id);
+    $stmt = $dbh -> prepare("UPDATE profile SET NAME = :name, SURNAME = :surname WHERE ID = :id)");
+    $stmt -> execute($data);
+    $dbh = null;
+}
 
 ?>
