@@ -168,6 +168,9 @@ h2{
     height: 100%;
     border-radius: 10%;
 }
+#userImg{
+    /*height: 38px !important;*/
+}
 @media (min-width: 800px){
     #divNavTrigger{
         display: none;

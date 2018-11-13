@@ -101,7 +101,7 @@
 				$resul = selectDataProfile(selectIdProfile($user));
                 foreach ($resul as $row){
                     $_SESSION["user"]["userId"] = $row["id"];
-                    $_SESSION["user"]["userName"] = $row["name"];
+                    $_SESSION["user"]["userName"] = $row["user"];
                     $_SESSION["user"]["userPhoto"] = $row["photo"];
         		}
 				header("Location: index.php");

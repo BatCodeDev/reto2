@@ -7,9 +7,7 @@ $(window).resize(function(){
     $("#grid").height($(window).height());
 });
 function request2server(idForm, target) {
-    debugger;
     var form_data = $("#"+idForm).serialize();
-    debugger;
     $.ajax({
         url: target,
         data: form_data,

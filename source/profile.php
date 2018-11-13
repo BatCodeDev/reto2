@@ -4,7 +4,6 @@ include ("sideBar.php");
 include ("server/profileDB.php");
 $con = connect();
 $user = selectDataProfile($_GET['id']);
-print_r($user);
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,7 +11,6 @@ print_r($user);
     <title></title>
     <meta name="viewport" content="width=device-width">
     <script src="js/jquery.js"></script>
-    <script src="js/main.js"></script>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/profile.css">
@@ -22,13 +20,14 @@ print_r($user);
         <?php include("navBar.php")?>
         <div id="profile">
             <div id="profileImg">
-                <?php if(isset($_SESSION['user'])){ ?>
-                    <img src="<?=$_SESSION['user']["userPhoto"]?>" alt="">
+                <?php if(isset($_SESSION['user'])&&$_SESSION['user']['userPhoto'] != ""){ ?>
+                    <img src="<?=$_SESSION['user']["userPhoto"]?>">
                 <?php }else{ ?>
-                    <img src="img/default.png" alt="">
+                    <img src="img/default.png">
                 <?php } ?>
-                <form action="">
-                    <input type="file">
+                <form id="imgForm" method="post" action="imgUpload.php" enctype="multipart/form-data">
+                    <input type="file" name="file">
+                    <button type="reset">Descartar</button>
                     <button type="submit">Aceptar</button>
                 </form>
             </div>

@@ -74,9 +74,18 @@ function updateProfile($id, $name, $surname){
     $data = array("name" => $name,
         "surname" => $surname,
         "id" => $id);
-    $stmt = $dbh -> prepare("UPDATE profile SET NAME = :name, SURNAME = :surname WHERE ID = :id)");
+    $stmt = $dbh -> prepare("UPDATE profile SET NAME = :name, SURNAME = :surname WHERE ID = :id");
     $stmt -> execute($data);
     $dbh = null;
 }
-
+function updateImg($id, $img){
+    $dbh = connect();
+    $stmt = $dbh -> prepare("UPDATE profile SET photo = :img WHERE ID = :id");
+    $stmt -> execute(array(
+        "img" => $img,
+        "id" => $id
+        ));
+    echo $stmt->rowCount();
+    $dbh = null;
+}
 ?>
