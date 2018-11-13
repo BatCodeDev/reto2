@@ -12,13 +12,9 @@
         <?php 
             include "navBar.php"; 
             include "sideBar.php"; 
-            print_r($_SESSION["user"]);
             include_once "server/questionDB.php";
             include_once "server/favouriteDB.php";
             include_once "server/categoryDB.php";
-            if(!isset($_SESSION["user"])){
-                header("location: loginRegistry.php");
-            }
             $userImg = "img/alexddo.png";
         ?>
         <div id="content">
@@ -47,7 +43,7 @@
                         <?php
                             $resul = selectRecientQuestion();
                             foreach ($resul as $row){
-                                echo $row["header"]." ".$row["date"].PHP_EOL."<br>";
+                                echo $row["header"]." ".$row["dateQ"].PHP_EOL."<br>";
                             }
                         ?>
                     </div>
@@ -62,7 +58,7 @@
                             foreach ($resulF as $rowF){
                                 $resulF = selectQuestionById($rowF["id_question"]);
                                 foreach ($resulF as $rowQ){
-                                    echo $rowQ["header"]." ".$rowQ["date"].PHP_EOL."<br>";
+                                    echo $rowQ["header"]." ".$rowQ["dateQ"].PHP_EOL."<br>";
                                 }
                             }
                         ?>
