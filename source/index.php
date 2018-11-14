@@ -43,7 +43,7 @@
                         <?php
                             $resul = selectRecientQuestion();
                             foreach ($resul as $row){
-                                echo $row["header"]." ".$row["dateQ"].PHP_EOL."<br>";
+                                echo "<a href='question.php?idQ=".$row["id"]."'>".$row["header"]." ".$row["dateQ"].PHP_EOL."</a><br>";
                             }
                         ?>
                     </div>

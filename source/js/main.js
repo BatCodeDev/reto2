@@ -11,6 +11,7 @@ $(window).resize(function(){
         $("#fullfade").fadeOut(200);
     }
 });
+
 function request2server(idForm, target) {
     var form_data = $("#"+idForm).serialize();
     $.ajax({
