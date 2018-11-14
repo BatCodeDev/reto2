@@ -58,8 +58,21 @@
 
             <?php
                 if (isset($_GET["idQ"])) {
-                    echo "<form method='POST'>
-                    <input type='button' name='fav' value='Marcar esta pregunta como favorita'>
+                    echo "<form method='POST'>";
+                    $resul = selectFavouriteUserQuestion($_SESSION["user"]["userId"]);
+                    if ($resul != null) {
+                        foreach ($resul as $row){
+                            if ($row["id_question"]!==$_GET["idQ"]) {
+                                echo "<input type='submit' name='favQA' value='Marcar esta pregunta como favorita'>";
+                            }else{
+                                echo "<input type='submit' name='favQQ' value='Quitar esta pregunta como favorita'>";
+                            }
+                        }   
+                    }else{
+                        echo "<input type='submit' name='favQA' value='Marcar esta pregunta como favorita'>";
+                    }
+                                         
+                    echo "</form><form method='POST'>
                     <h3>Respuestas</h3>";
                     if (isset($_SESSION['user'])) {
                         echo "<input type='text' name='rawDataA' required><br>
@@ -101,6 +114,16 @@
                 }
                 insertQuestion($_POST["header"], $_POST["rawData"], date("m-d-Y H:i:s"), $_SESSION["user"]["userId"], $idCategory);
                 header("Location: index.php");
+            }
+
+            if (isset($_POST["favQA"])) {
+                insertFavouriteQuestion($_SESSION["user"]["userId"], $_GET["idQ"]);
+                header("Location: question.php?idQ=".$_GET["idQ"]);
+            }
+
+            if (isset($_POST["favQQ"])) {
+                deleteFavouriteQuestion($_SESSION["user"]["userId"], $_GET["idQ"]);
+                header("Location: question.php?idQ=".$_GET["idQ"]);
             }
 
             if (isset($_POST["subAnswer"])) {
