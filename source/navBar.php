@@ -3,8 +3,8 @@
         <img src="img/logo.png" onclick="window.location.href='index.php'">
     </div>
     <div id="divSearch">
-        <form method="post">
-            <input type="text">
+        <form method="post" action="server/searchForQuestion.php">
+            <input type="text" name="searchQuestion">
             <button type="submit" id="search"></button>
         </form>
     </div>
