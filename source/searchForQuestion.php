@@ -29,9 +29,12 @@
         <div id="found">
             <?php
                 for ($x = 0; $x < sizeof($questions); $x++){
-                    echo $questions[$x]["id"], $questions[$x]["header"], "<br>";
+                    $questions[$x]["id"];
+                    $questions[$x]["header"];
+                    echo '<a href="question.php?idQ='.$questions[$x]['id'].'">'.$questions[$x]["header"].'</a>', "<br>" ;
                 }
             ?>
+
         </div>
     </div>
 </body>
