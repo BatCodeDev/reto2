@@ -2,7 +2,7 @@
     if(isset($_POST["searchQuestion"])){
         include ("server/connection.php");
         include ("server/questionDB.php");
-        echo $_POST["searchQuestion"];
+        $questions = searchQuestionHeader($_POST["searchQuestion"]);
     }
 ?>
 <!DOCTYPE html>
@@ -27,7 +27,11 @@
             include "navBar.php";
         ?>
         <div id="found">
-
+            <?php
+                for ($x = 0; $x < sizeof($questions); $x++){
+                    echo $questions[$x]["id"], $questions[$x]["header"], "<br>";
+                }
+            ?>
         </div>
     </div>
 </body>
