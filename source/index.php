@@ -27,9 +27,7 @@
                         $resul = selectAllCategory();
                             foreach ($resul as $row){
                                 echo "<div class='category'>
-                                        <div class='cetegoryDecoration'>
-                                        <div class='cDecoration'></div>
-                                        </div>".$row["name"]."</div>";
+                                        <a href=''>".$row["name"]."</a></div>";
                             }
                     ?>
                 </div>
