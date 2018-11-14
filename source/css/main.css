@@ -95,7 +95,6 @@ footer{
     transform: translateY(-18px) rotate(45deg);
 }
 .divCategory{
-    height: 40%;
     width: 100%;
     padding: .5em;
 }
@@ -153,20 +152,13 @@ h2{
     padding: .5em;
 }
 .category{
+    margin-top: 3%;
+    padding: auto auto;
     height: 2.5em;
     width: 5em ;
     background: lightblue;
     text-align: center;
-}
-.cetegoryDecoration{
-    height: 50%;
-    width: 100%;
-    padding: 9%;
-}
-.cDecoration{
-    background: white;
-    height: 100%;
-    border-radius: 10%;
+    border-radius: 12px;
 }
 #userImg{
     /*height: 38px !important;*/
@@ -199,9 +191,6 @@ h2{
     }
     #questions{
         height: 60%;
-    }
-    .divCategory {
-        height: 20%;
     }
     .navLinks{
         height: 20% !important;

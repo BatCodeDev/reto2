@@ -59,6 +59,7 @@
             <?php
                 if (isset($_GET["idQ"])) {
                     echo "<form method='POST'>
+                    <input type='button' name='fav' value='Marcar esta pregunta como favorita'>
                     <h3>Respuestas</h3>";
                     if (isset($_SESSION['user'])) {
                         echo "<input type='text' name='rawDataA' required><br>
