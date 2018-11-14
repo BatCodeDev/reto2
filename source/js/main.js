@@ -9,6 +9,7 @@ $(window).resize(function(){
         //alert($(window).width());
         $("#navBar").removeClass("toggle");
         $("#fullfade").fadeOut(200);
+        $("#divNavTrigger").removeClass("trigger");
     }
 });
 
