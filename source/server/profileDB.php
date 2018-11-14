@@ -14,6 +14,21 @@
 		return $id;
 	}
 
+
+	function selectNameProfile($id){
+		$dbh = connect();
+		$data = array("id" => $id);
+		$stmt = $dbh -> prepare("SELECT user from profile where id = :id");
+		$stmt -> execute($data);
+
+		$user = null;
+		while($row = $stmt->fetch()) {
+			$user =  $row['user'];
+		}
+		$dbh = null;
+		return $user;
+	}
+
 	function selectDataProfile($id){
 		$dbh = connect();
 		$data = array("id" => $id);
