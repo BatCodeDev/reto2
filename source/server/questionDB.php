@@ -39,6 +39,16 @@
 		$stmt -> execute($data);
 		$dbh = null;
 	}
+function searchQuestionHeader($data){
+    $dbh = connect();
+
+    $stmt = $dbh -> prepare("SELECT * FROM question where header like '%$data%'");
+
+    $stmt -> execute();
+    $resul = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $dbh = null;
+    return $resul;
+}
 
 	/*
 
