@@ -57,22 +57,32 @@
             </form>
 
             <?php
-                if (isset($_GET["idQ"])) {
-                    echo "<form method='POST'>";
+            if (isset($_POST["favQA"])) {
+                insertFavouriteQuestion($_SESSION["user"]["userId"], $_GET["idQ"]);
+            }
+
+            if (isset($_POST["favQQ"])) {
+                deleteFavouriteQuestion($_SESSION["user"]["userId"], $_GET["idQ"]);
+            }
+            $fav = false;
+            echo "<form method='POST'>";
+                if (isset($_GET["idQ"], $_SESSION["user"]["userId"])) {
                     $resul = selectFavouriteUserQuestion($_SESSION["user"]["userId"]);
-                    if ($resul != null) {
                         foreach ($resul as $row){
-                            if ($row["id_question"]!==$_GET["idQ"]) {
-                                echo "<input type='submit' name='favQA' value='Marcar esta pregunta como favorita'>";
-                            }else{
-                                echo "<input type='submit' name='favQQ' value='Quitar esta pregunta como favorita'>";
+                            if ($row["id_question"]==$_GET["idQ"]) {
+                                $fav = true;
                             }
-                        }   
+                        }
+                    if ($fav) {
+                        echo "<input type='submit' name='favQQ' value='Quitar esta pregunta como favorita'>";
                     }else{
                         echo "<input type='submit' name='favQA' value='Marcar esta pregunta como favorita'>";
                     }
-                                         
-                    echo "</form><form method='POST'>
+                    echo "</form>";
+                }
+
+                if (isset($_GET["idQ"])) {
+                    echo "<form method='POST'>
                     <h3>Respuestas</h3>";
                     if (isset($_SESSION['user'])) {
                         echo "<input type='text' name='rawDataA' required><br>
@@ -102,6 +112,7 @@
                     echo  "<input type='hidden' id='idProfileH' value='".$rowQ["id_profile"]."'>";
 
                     echo  "<input type='hidden' id='categoryH' value='".selectCategoryById($rowQ["id_category"])."'>";
+
                 }
             }
             
@@ -116,21 +127,11 @@
                 header("Location: index.php");
             }
 
-            if (isset($_POST["favQA"])) {
-                insertFavouriteQuestion($_SESSION["user"]["userId"], $_GET["idQ"]);
-                header("Location: question.php?idQ=".$_GET["idQ"]);
-            }
 
-            if (isset($_POST["favQQ"])) {
-                deleteFavouriteQuestion($_SESSION["user"]["userId"], $_GET["idQ"]);
-                header("Location: question.php?idQ=".$_GET["idQ"]);
-            }
 
             if (isset($_POST["subAnswer"])) {
                 insertAnswer($_POST["rawDataA"], date("m-d-Y H:i:s"), $_SESSION["user"]["userId"], $_GET["idQ"]);
-                header("Location: question.php?idQ=".$_GET["idQ"]);
             }
-
         ?>
     </div>
 </body>
