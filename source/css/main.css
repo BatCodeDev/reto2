@@ -198,6 +198,9 @@ h2{
     #navBarHeader {
         height: 15%;
     }
+    .toggle{
+        width: 40% !important;
+    }
 }
 @media (max-width: 450px){
     #divSearch input{
@@ -217,5 +220,8 @@ h2{
     }
     #navBarHeader {
         height: 10%;
+    }
+    .toggle{
+        width: 60% !important;
     }
 }

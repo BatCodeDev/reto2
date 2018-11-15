@@ -6,7 +6,6 @@ $(window).resize(function(){
     $("body").height($(window).height());
     $("#grid").height($(window).height());
     if($(window).width() > 800){
-        //alert($(window).width());
         $("#navBar").removeClass("toggle");
         $("#fullfade").fadeOut(200);
         $("#divNavTrigger").removeClass("trigger");

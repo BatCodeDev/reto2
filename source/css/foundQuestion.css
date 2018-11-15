@@ -1,0 +1,40 @@
+#found{
+    grid-column: 1 / 9;
+    grid-row: 2 / 10;
+    padding: 1em;
+}
+.divfoundQuestion{
+    background: red;
+    height: 20%;
+    display: flex;
+    margin-bottom: 2%;
+}
+.divVotes{
+    width: 20%;
+    height: 100%;
+}
+.divQuestionInfo{
+    width: 80%;
+    height: 100%;
+}
+.questionHeader{
+    height: 30%;
+}
+.questionData{
+    height: 70%;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+@media (min-width: 800px){
+
+}
+
+@media (max-width: 800px){
+    #found{
+        grid-column: 1 / 11;
+    }
+}
+
+@media (max-width: 450px){
+
+}
