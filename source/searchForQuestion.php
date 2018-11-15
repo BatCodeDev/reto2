@@ -12,12 +12,7 @@
     <script src="js/jquery.js"></script>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/grid.css">
-<style>
-    #found{
-        grid-column: 1 / 9;
-        grid-row: 2 / 10;
-    }
-</style>
+    <link rel="stylesheet" href="css/foundQuestion.css">
 <body>
     <div id="grid">
         <?php
