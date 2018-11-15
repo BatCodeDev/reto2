@@ -24,6 +24,17 @@
 		return $resul;
 	}
 
+	function selectQuestionByCategory($idCategory){
+		$dbh = connect();
+		$data = array("idCategory" => $idCategory);
+		$stmt = $dbh -> prepare("SELECT * FROM question where id_category = :idCategory");
+		$stmt -> execute($data);
+
+		$resul = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		$dbh = null;
+		return $resul;
+	}
+
 	//INSERT QUESTION
 	function insertQuestion($header, $rawData, $date, $idProfile, $idCategory){
 		$dbh = connect();

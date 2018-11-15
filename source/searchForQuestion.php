@@ -1,9 +1,7 @@
 <?php
-    if(isset($_POST["searchQuestion"])){
         include ("server/connection.php");
-        include ("server/questionDB.php");
-        $questions = searchQuestionHeader($_POST["searchQuestion"]);
-    }
+        include ("server/questionDB.php");       
+        include ("server/categoryDB.php"); 
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,10 +26,23 @@
         ?>
         <div id="found">
             <?php
-                for ($x = 0; $x < sizeof($questions); $x++){
-                    $questions[$x]["id"];
-                    $questions[$x]["header"];
-                    echo '<a href="question.php?idQ='.$questions[$x]['id'].'">'.$questions[$x]["header"].'</a>', "<br>" ;
+                if (isset($_POST["searchQuestion"])) {
+                    $questions = searchQuestionHeader($_POST["searchQuestion"]);
+                    for ($x = 0; $x < sizeof($questions); $x++){
+                        $questions[$x]["id"];
+                        $questions[$x]["header"];
+                        echo '<a href="question.php?idQ='.$questions[$x]['id'].'">'.$questions[$x]["header"].'</a>', "<br>" ;
+                    }
+                }
+
+                if (isset($_GET["categoryName"])) {
+                    $idC = selectIdCategory($_GET["categoryName"]);
+                    $questions = selectQuestionByCategory($idC);
+                    for ($x = 0; $x < sizeof($questions); $x++){
+                        $questions[$x]["id"];
+                        $questions[$x]["header"];
+                        echo '<a href="question.php?idQ='.$questions[$x]['id'].'">'.$questions[$x]["header"].'</a>', "<br>" ;
+                    }
                 }
             ?>
 

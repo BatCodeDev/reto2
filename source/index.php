@@ -27,7 +27,7 @@
                         $resul = selectAllCategory();
                             foreach ($resul as $row){
                                 echo "<div class='category'>
-                                        <a href=''>".$row["name"]."</a></div>";
+                                        <a href='searchForQuestion.php?categoryName=".$row["name"]."'>".$row["name"]."</a></div>";
                             }
                     ?>
                 </div>
@@ -56,7 +56,7 @@
                             foreach ($resulF as $rowF){
                                 $resulF = selectQuestionById($rowF["id_question"]);
                                 foreach ($resulF as $rowQ){
-                                    echo $rowQ["header"]." ".$rowQ["dateQ"].PHP_EOL."<br>";
+                                    echo "<a href='question.php?idQ=".$rowQ["id"]."'>".$rowQ["header"]." ".$rowQ["dateQ"].PHP_EOL."</a><br>";
                                 }
                             }
                         ?>
