@@ -10,4 +10,36 @@
 		$dbh = null;
 		return $resul;
 	}
+
+	function selectFavouriteUserQuestion($idProfile){
+		$dbh = connect();
+		$stmt = $dbh -> prepare("SELECT id_question from favourite where id_profile =".$idProfile);
+		$stmt -> execute();
+		$resul = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		$dbh = null;
+		return $resul;
+
+	}
+
+	function insertFavouriteQuestion($idProfile, $idQuestion){
+        $dbh = connect();
+		//INSERT CATEGORY
+		$data = array("idProfile" => $idProfile,
+						"idQuestion" => $idQuestion,
+						"type" => "Q",
+						);
+
+		$stmt = $dbh -> prepare("INSERT INTO favourite (id_profile, id_question, type) values (:idProfile, :idQuestion, :type)");
+
+		$stmt -> execute($data);
+        $dbh = null;
+	}
+
+	function deleteFavouriteQuestion($idProfile, $idQuestion){
+        $dbh = connect();
+		//INSERT CATEGORY
+		$stmt = $dbh -> prepare("DELETE FROM favourite WHERE id_profile = ".$idProfile." && id_question = ".$idQuestion);
+		$stmt -> execute();
+        $dbh = null;
+	}
 ?>

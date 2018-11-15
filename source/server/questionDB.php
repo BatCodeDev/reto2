@@ -39,7 +39,36 @@
 		$stmt -> execute($data);
 		$dbh = null;
 	}
+function searchQuestionHeader($data){
+    $dbh = connect();
 
+    $stmt = $dbh -> prepare("SELECT * FROM question where header like '%$data%'");
+
+    $stmt -> execute();
+    $resul = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $dbh = null;
+    return $resul;
+}
+
+/**
+ * Funcion para sacar la ultima pregunta, y asi poder utilizar su id
+ * para insertarle el archivo cuando se hace submit a una pregunta.
+ *
+ */
+function getLastQuestion()
+{
+    $conexion = connect();
+    $consulta = $conexion->prepare('
+            SELECT max(id) 
+            FROM question
+            ');
+    $consulta->execute();
+    $question = $consulta->fetchObject(PDO::FETCH_ASSOC);
+
+    $conexion=null;
+    return $question;
+
+}
 	/*
 
 

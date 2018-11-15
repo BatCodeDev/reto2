@@ -95,7 +95,6 @@ footer{
     transform: translateY(-18px) rotate(45deg);
 }
 .divCategory{
-    height: 30%;
     width: 100%;
     padding: .5em;
 }
@@ -108,7 +107,7 @@ footer{
     height: 10%;
 }
 .verticalTxt{
-    height: 90%;
+    height: 100%;
     padding: 1em .5em;
     display: flex;
     justify-content: space-around;
@@ -153,20 +152,13 @@ h2{
     padding: .5em;
 }
 .category{
-    height: 25%;
+    margin-top: 3%;
+    padding: auto auto;
+    height: 2.5em;
     width: 5em ;
     background: lightblue;
     text-align: center;
-}
-.cetegoryDecoration{
-    height: 50%;
-    width: 100%;
-    padding: 9%;
-}
-.cDecoration{
-    background: white;
-    height: 100%;
-    border-radius: 10%;
+    border-radius: 12px;
 }
 #userImg{
     /*height: 38px !important;*/
@@ -200,8 +192,11 @@ h2{
     #questions{
         height: 60%;
     }
-    .divCategory {
-        height: 20%;
+    .navLinks{
+        height: 20% !important;
+    }
+    #navBarHeader {
+        height: 15%;
     }
 }
 @media (max-width: 450px){
@@ -217,7 +212,10 @@ h2{
     #divSearch{    
         margin: 5% 0 !important;
     }
-    .category {
-        height: 40% !important;
+    .navLinks {
+        height: 10% !important;
+    }
+    #navBarHeader {
+        height: 10%;
     }
 }

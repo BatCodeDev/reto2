@@ -27,9 +27,7 @@
                         $resul = selectAllCategory();
                             foreach ($resul as $row){
                                 echo "<div class='category'>
-                                        <div class='cetegoryDecoration'>
-                                        <div class='cDecoration'></div>
-                                        </div>".$row["name"]."</div>";
+                                        <a href=''>".$row["name"]."</a></div>";
                             }
                     ?>
                 </div>
@@ -43,7 +41,7 @@
                         <?php
                             $resul = selectRecientQuestion();
                             foreach ($resul as $row){
-                                echo $row["header"]." ".$row["dateQ"].PHP_EOL."<br>";
+                                echo "<a href='question.php?idQ=".$row["id"]."'>".$row["header"]." ".$row["dateQ"].PHP_EOL."</a><br>";
                             }
                         ?>
                     </div>

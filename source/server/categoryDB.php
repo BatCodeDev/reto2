@@ -10,6 +10,20 @@
 		return $resul;
 	}
 
+	function selectCategoryById($id){
+		$dbh = connect();
+		$data = array("id" => $id);
+		$stmt = $dbh -> prepare("SELECT name from category where id = :id");
+		$stmt -> execute($data);
+
+		$name = null;
+		while($row = $stmt->fetch()) {
+			$name =  $row['name'];
+		}
+		$dbh = null;
+		return $name;
+	}
+
 	function selectIdCategory($name){
 		$dbh = connect();
 		$data = array("name" => $name);
