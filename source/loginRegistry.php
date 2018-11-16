@@ -78,7 +78,7 @@
 	<div id="divRegistry" class="divLoginRegistry">
 		<p>Registry</p>
 		<p id="errorRegistry"></p>
-		<form id="formRegistry" onsubmit="return request2server(this.id, 'server/verifyRegistry.php')" method="POST">
+		<form id="formRegistry" onsubmit="return validate(this, this.user)" method="POST">
 			<input type="email" name="email" placeholder="Correo" required>
 			<input type="text" name="user" placeholder="Usuario" required>
 			<input type="password" name="password" placeholder="Contraseña" required>
