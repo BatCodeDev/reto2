@@ -19,7 +19,7 @@ function request2server(idForm, target) {
         data: form_data,
         type: "POST",
         success: function (data) {
-            debugger;
+            console.log(data);
             switch (data){
                 case "success":
                     $("#errorRegistry").html("Correcto");
@@ -59,4 +59,33 @@ function goFade(element) {
     }else{
         element.fadeOut(200);
     }
+}
+function validate(elForm, user){
+    var correct = true;
+    var inputs = elForm.children;
+    Array.from(inputs).forEach(function (key) {
+        if(!searchCleanString(key.value)){
+            key.style.background = "red";
+            correct = false;
+        }else if(key.name!="registry"||key.name!="login"){
+            key.style.background = "white";
+        }
+    });
+    if(!user.value.match("^[a-z0-9]*$")){
+        user.style.background = "red";
+        correct = false;
+    }else{
+        user.style.background = "white";
+    }
+    if(correct){
+        request2server(elForm.id, 'server/verifyRegistry.php')
+    }
+    return false;
+}
+function searchCleanString(element) {
+    for(var x = 0; x < element.length&&element.charAt(x)!=';'; x++){}
+    if(x == element.length){
+        return true;
+    }
+    return false;
 }
