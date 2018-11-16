@@ -14,6 +14,7 @@
 
         header{
             background-color: white;
+            height: auto;
         }
 
         h2{
@@ -21,13 +22,13 @@
         }
 
         .divCategory{
-            
             width: 90%;
             margin: 0 auto;
         }
 
         .category{
             background-color: #FC3667;
+            margin-bottom: 3%;
         }
 
         .verticalTxt{
@@ -47,7 +48,6 @@
             width: 90%;
             margin: 0 auto;
             text-align: left;
-
         }
 
         #questions a{
@@ -55,6 +55,7 @@
             border-radius: 3px;
             line-height: 0px;
             padding-left: 5px;
+            margin: .1em;
 
         }
         

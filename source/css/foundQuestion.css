@@ -1,27 +1,50 @@
+#grid{
+    background-color: #D5F6F0;
+}
+
+header{
+    background-color: white;
+}
+
+#content{
+    width: 90%;
+    margin: 0 auto;
+}
+
+h2{
+    font-family: 'Josefin Sans', sans-serif;
+}
+
 #found{
     grid-column: 1 / 9;
     grid-row: 2 / 10;
-    padding: 1em;
+    padding: 1em 1em .6em;
+
+    border: dashed 1px grey;
+    background-color: white;
 }
+
+#divFound{
+    width: 90%;
+}
+
 .divfoundQuestion{
-    background: red;
-    height: 20%;
-    display: flex;
-    margin-bottom: 2%;
+    background-color: #FC3667;
+    border-radius: 3px;
+    margin: 0.5em;
+    padding: 0.5em;
 }
 .divVotes{
-    width: 20%;
-    height: 100%;
 }
 .divQuestionInfo{
-    width: 80%;
-    height: 100%;
 }
-.questionHeader{
-    height: 30%;
+.questionHeader a{
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 1em;
+    text-decoration: none;
+    color: white;
 }
 .questionData{
-    height: 70%;
     overflow: hidden;
     word-wrap: break-word;
 }
