@@ -47,7 +47,7 @@
         </div>
         <div class="navLinks">
             <!--<img src="img/history.png"">-->
-            <a href="">Historial de preguntas</a>
+            <a href="searchForQuestion.php?history=true">Historial de preguntas</a>
         </div>
         <div class="navLinks">
             <!--<img src="img/logo.png"">-->

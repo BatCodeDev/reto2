@@ -21,6 +21,12 @@
             font-family: 'Josefin Sans', sans-serif;
         }
 
+        p{
+            width: 100%;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
         .divCategory{
             width: 90%;
             margin: 0 auto;
@@ -34,6 +40,8 @@
         .verticalTxt{
             border: dashed 1px grey;
             background-color: white;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .verticalTxt a {
