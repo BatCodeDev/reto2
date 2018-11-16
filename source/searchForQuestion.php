@@ -19,15 +19,28 @@
             include "sideBar.php";
             include "navBar.php";
         ?>
+
+
+
         <div id="found">
             <?php
                 if (isset($_POST["searchQuestion"])) {
                     $questions = searchQuestionHeader($_POST["searchQuestion"]);
                     for ($x = 0; $x < sizeof($questions); $x++){
-                        $questions[$x]["id"];
-                        $questions[$x]["header"];
-                        echo '<a href="question.php?idQ='.$questions[$x]['id'].'">'.$questions[$x]["header"].'</a>', "<br>" ;
-                    }
+                    echo '<div class="divfoundQuestion">';
+                        echo '<div class="divVotes">';
+
+                        echo '</div>';
+                        echo '<div class="divQuestionInfo">';
+                            echo '<div class="questionHeader">';
+                                echo '<a href="question.php?idQ='.$questions[$x]['id'].'">'.$questions[$x]["header"].'</a>';
+                            echo '</div>';
+                            echo '<div class="questionData">';
+                                echo $questions[$x]["raw_data"];
+                            echo '</div>';
+                        echo '</div>';
+                    echo '</div>';
+                }
                 }
 
                 if (isset($_GET["categoryName"])) {
