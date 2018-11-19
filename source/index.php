@@ -96,7 +96,7 @@
             </div>
             <div id="questions">
                 <div class="verticalHalf">
-                    <h2>Preguntas recientes:</h2>
+                    <h2>Recientes:</h2>
                     <div class="verticalTxt">
                         <?php
                             $resul = selectRecientQuestion();
@@ -108,7 +108,7 @@
                 </div>
                 <br>
                 <div class="verticalHalf">
-                <h2>Preguntas destacadas:</h2>
+                <h2>Destacadas:</h2>
                     <div class="verticalTxt">
                         <?php
                             $resulF = selectFavouriteQuestion();
