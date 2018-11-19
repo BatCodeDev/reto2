@@ -14,6 +14,16 @@ $user = selectDataProfile($_GET['id']);
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/profile.css">
+    <style type="text/css">
+        #grid{
+            background-color: #D5F6F0;
+        }
+
+        header{
+            background-color: white;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
     <div id="grid">

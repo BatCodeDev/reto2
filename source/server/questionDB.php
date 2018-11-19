@@ -24,6 +24,17 @@
 		return $resul;
 	}
 
+	function selectAllQuestionByIdProfile($idProfile){
+		$dbh = connect();
+		$data = array("id" => $idProfile);
+		$stmt = $dbh -> prepare("SELECT * FROM question where id_profile = :id ORDER BY dateQ DESC");
+		$stmt -> execute($data);
+
+		$resul = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		$dbh = null;
+		return $resul;
+	}
+
 	function selectQuestionByCategory($idCategory){
 		$dbh = connect();
 		$data = array("idCategory" => $idCategory);

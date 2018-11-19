@@ -14,25 +14,34 @@
 
         header{
             background-color: white;
+            height: auto;
         }
 
         h2{
             font-family: 'Josefin Sans', sans-serif;
         }
 
+        p{
+            width: 100%;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
         .divCategory{
-            
             width: 90%;
             margin: 0 auto;
         }
 
         .category{
             background-color: #FC3667;
+            margin-bottom: 3%;
         }
 
         .verticalTxt{
             border: dashed 1px grey;
             background-color: white;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .verticalTxt a {
@@ -47,7 +56,6 @@
             width: 90%;
             margin: 0 auto;
             text-align: left;
-
         }
 
         #questions a{
@@ -55,6 +63,7 @@
             border-radius: 3px;
             line-height: 0px;
             padding-left: 5px;
+            margin: .1em;
 
         }
         
@@ -87,7 +96,7 @@
             </div>
             <div id="questions">
                 <div class="verticalHalf">
-                    <h2>Preguntas recientes:</h2>
+                    <h2>Recientes:</h2>
                     <div class="verticalTxt">
                         <?php
                             $resul = selectRecientQuestion();
@@ -99,7 +108,7 @@
                 </div>
                 <br>
                 <div class="verticalHalf">
-                <h2>Preguntas destacadas:</h2>
+                <h2>Destacadas:</h2>
                     <div class="verticalTxt">
                         <?php
                             $resulF = selectFavouriteQuestion();
