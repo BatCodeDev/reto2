@@ -21,8 +21,12 @@
         #content{
             background-color: white;
             margin: 10px auto;
-            width: 90%;
+            width: 100%;
             padding: 0 .5em;
+        }
+
+        @media (max-width: 800px){
+            #content{width: 90%;}
         }
 
         .divQuestion{
@@ -79,6 +83,9 @@
 <body>
     <div id="grid">
         <?php 
+        if (isset($_POST["subQuestion"])) {
+            header('location:searchForQuestion.php?history=true');
+        }
             include "navBar.php"; 
             include "sideBar.php"; 
             include_once "server/questionDB.php";
@@ -109,6 +116,19 @@
             </form>
 
             <?php
+            if (isset($_POST["subQuestion"])) {
+                $idCategory = selectIdCategory($_POST["category"]);
+                if ($idCategory == null) {
+                    insertCategory($_POST["category"]);
+                    $idCategory = selectIdCategory($_POST["category"]);
+                }
+                insertQuestion($_POST["header"], $_POST["rawData"], date("m-d-Y H:i:s"), $_SESSION["user"]["userId"], $idCategory);
+            }
+
+            if (isset($_POST["subAnswer"])) {
+                insertAnswer($_POST["rawDataA"], date("m-d-Y H:i:s"), $_SESSION["user"]["userId"], $_GET["idQ"]);
+            }
+
             if (isset($_POST["favQA"])) {
                 insertFavouriteQuestion($_SESSION["user"]["userId"], $_GET["idQ"]);
             }
@@ -167,23 +187,10 @@
 
                 }
             }
+
             
 
-            if (isset($_POST["subQuestion"])) {
-                $idCategory = selectIdCategory($_POST["category"]);
-                if ($idCategory == null) {
-                    insertCategory($_POST["category"]);
-                    $idCategory = selectIdCategory($_POST["category"]);
-                }
-                insertQuestion($_POST["header"], $_POST["rawData"], date("m-d-Y H:i:s"), $_SESSION["user"]["userId"], $idCategory);
-                header("Location: index.php");
-            }
 
-
-
-            if (isset($_POST["subAnswer"])) {
-                insertAnswer($_POST["rawDataA"], date("m-d-Y H:i:s"), $_SESSION["user"]["userId"], $_GET["idQ"]);
-            }
         ?>
     </div>
 </body>

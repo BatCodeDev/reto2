@@ -17,7 +17,7 @@ header{
     flex-direction: column;
 }
 #content{
-    grid-column: 1 / 11;
+    grid-column: 1 / 9;
     grid-row: 2 / 10;
 }
 footer{
@@ -100,14 +100,12 @@ footer{
 }
 .verticalHalf{
     height: auto;
-    width: 100%;
     padding: .5em;
 }
 .verticalHeader{
     height: 10%;
 }
 .verticalTxt{
-    height: 100%;
     padding: 1em .5em;
     display: flex;
     justify-content: space-around;
@@ -175,7 +173,7 @@ h2{
         width: 20%;
     }
     .verticalTxt{
-        width: 80% !important;
+        width: 100% !important;
     }
     #questions{
         display: flex;
@@ -183,6 +181,13 @@ h2{
     }
 }
 @media (max-width: 800px){
+    .verticalTxt {
+        width: 100%;
+    }
+    #content{
+        grid-column: 1 / 11;
+        grid-row: 2 / 10;
+    }
     #divLogo{
         width: 20%;
     }

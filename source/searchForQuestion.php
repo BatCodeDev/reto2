@@ -62,6 +62,25 @@
                         echo '</div>';
                         }
                     }
+
+                    if (isset($_GET["history"])) {
+                        $questions = selectAllQuestionByIdProfile($_SESSION["user"]["userId"]);
+                        for ($x = 0; $x < sizeof($questions); $x++){
+                        echo '<div class="divfoundQuestion">';
+                            echo '<div class="divVotes">';
+
+                            echo '</div>';
+                            echo '<div class="divQuestionInfo">';
+                                echo '<div class="questionHeader">';
+                                    echo '<a href="question.php?idQ='.$questions[$x]['id'].'">'.$questions[$x]["header"].'</a>';
+                                echo '</div>';
+                                echo '<div class="questionData">';
+                                    echo $questions[$x]["raw_data"];
+                                echo '</div>';
+                            echo '</div>';
+                        echo '</div>';
+                        }
+                    }
                 ?>
 
             </div>

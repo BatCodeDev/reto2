@@ -21,6 +21,12 @@
             font-family: 'Josefin Sans', sans-serif;
         }
 
+        p{
+            width: 100%;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
         .divCategory{
             width: 90%;
             margin: 0 auto;
@@ -34,6 +40,8 @@
         .verticalTxt{
             border: dashed 1px grey;
             background-color: white;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .verticalTxt a {
@@ -88,7 +96,7 @@
             </div>
             <div id="questions">
                 <div class="verticalHalf">
-                    <h2>Preguntas recientes:</h2>
+                    <h2>Recientes:</h2>
                     <div class="verticalTxt">
                         <?php
                             $resul = selectRecientQuestion();
@@ -100,7 +108,7 @@
                 </div>
                 <br>
                 <div class="verticalHalf">
-                <h2>Preguntas destacadas:</h2>
+                <h2>Destacadas:</h2>
                     <div class="verticalTxt">
                         <?php
                             $resulF = selectFavouriteQuestion();

@@ -79,7 +79,7 @@
 						"user" => $user, 
 						"password" => $password);
 
-		$stmt = $dbh -> prepare("INSERT INTO profile (name, surname, email, user, pass) values (:name, :surname, :email, :user, :password)");
+		$stmt = $dbh -> prepare("INSERT INTO profile (photo, name, surname, email, user, pass) values ('',:name, :surname, :email, :user, :password)");
 
 		$stmt -> execute($data);
         $dbh = null;
