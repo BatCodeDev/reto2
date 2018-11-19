@@ -2,6 +2,7 @@
         include ("server/connection.php");
         include ("server/questionDB.php");       
         include ("server/categoryDB.php"); 
+        include ("server/favouriteDB.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -79,6 +80,29 @@
                                 echo '</div>';
                             echo '</div>';
                         echo '</div>';
+                        }
+                    }
+
+                    if (isset($_GET["favQ"])) {
+                        $questions = selectFavouriteUserQuestion($_SESSION["user"]["userId"]);
+                        for ($x = 0; $x < sizeof($questions); $x++){
+                            $question =  selectQuestionById($questions[$x]["id_question"]);
+                            foreach ($question as $question){
+                                    echo '<div class="divfoundQuestion">';
+                                    echo '<div class="divVotes">';
+
+                                    echo '</div>';
+                                    echo '<div class="divQuestionInfo">';
+                                    echo '<div class="questionHeader">';
+                                    echo '<a href="question.php?idQ='.$question['id'].'">'.$question["header"].'</a>';
+                                    echo '</div>';
+                                    echo '<div class="questionData">';
+                                    echo $question["raw_data"];
+                                    echo '</div>';
+                                    echo '</div>';
+                                    echo '</div>';
+                                }
+                            
                         }
                     }
                 ?>

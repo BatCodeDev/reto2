@@ -3,6 +3,7 @@
 }
 body{
     margin: 0;    
+    background-color: #D5F6F0;
 }
 header{        
     display: flex;
@@ -133,8 +134,9 @@ h2{
     color: white;
     text-decoration: none;
     font-size: 1.5em;
-    margin-top: 2%;
+    padding: 2% 0%;
     font-family: 'Nanum Gothic', sans-serif;
+    border-bottom: 1px solid white;
 }
 #navBarContent img{
     height: auto;
@@ -165,7 +167,7 @@ h2{
 #userImg{
     /*height: 38px !important;*/
 }
-@media (min-width: 800px){
+@media (min-width: 1000px){
     #divNavTrigger{
         display: none;
     }
@@ -180,7 +182,7 @@ h2{
         width: 80%;
     }
 }
-@media (max-width: 800px){
+@media (max-width: 1000px){
     .verticalTxt {
         width: 100%;
     }
