@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Nanum+Gothic" rel="stylesheet">
     <style type="text/css">
 
-        #grid{
+        body{
             background-color: #D5F6F0;
         }
 
@@ -23,6 +23,7 @@
             margin: 10px auto;
             width: 100%;
             padding: 0 .5em;
+            width: 90%;
         }
 
         @media (max-width: 800px){
@@ -64,8 +65,7 @@
         }
 
         #rawData{
-            width: 100%;
-            height: 120px;
+            width: 95%;
         }
 
         h3{
@@ -75,6 +75,23 @@
 
         select{
             margin: 10px 0;
+        }
+        #answerDiv{
+            background-color: white;
+
+        }
+
+        #answerDiv div{
+            border: 1px #A9F7E8 solid;
+            padding-top: 0px;
+            margin: 5px 0px;
+            width: 100%;
+
+        }
+
+        #answerDiv div *{
+            margin-top: 0px;
+
         }
 
 
@@ -99,7 +116,7 @@
             <form method="POST">
                 <div class="divQuestion">
                     <h3>Cabecera</h3><input type="text" id="header" name="header" required maxlength="25">
-                    <h3>Cuerpo</h3><textarea id="rawData" maxlength="255" name="rawData" required></textarea>
+                    <h3>Cuerpo</h3><textarea onkeyup="textAreaAdjust(this)" style="overflow:hidden" id="rawData" maxlength="255" name="rawData" required></textarea>
                     <h3>Categoría</h3><input type="text" id="category" name="category" placeholder="Escribe o selecciona catergoría">
                     <select id="selectCategory" onchange="selectCategoryF()">
                         <option selected>---</option>
@@ -154,7 +171,7 @@
                 }
 
                 if (isset($_GET["idQ"])) {
-                    echo "<form method='POST'>
+                    echo "<div id='answerDiv'><form method='POST'>
                     <h3>Respuestas</h3>";
                     if (isset($_SESSION['user'])) {
                         echo "<input type='text' name='rawDataA' required><br>
@@ -183,7 +200,7 @@
                     echo  "<input type='hidden' id='dateQH' value='".$rowQ["dateQ"]."'>";
                     echo  "<input type='hidden' id='idProfileH' value='".$rowQ["id_profile"]."'>";
 
-                    echo  "<input type='hidden' id='categoryH' value='".selectCategoryById($rowQ["id_category"])."'>";
+                    echo  "<input type='hidden' id='categoryH' value='".selectCategoryById($rowQ["id_category"])."'></div>";
 
                 }
             }
@@ -195,6 +212,11 @@
     </div>
 </body>
     <script type="text/javascript">
+        function textAreaAdjust(o) {
+          o.style.height = "1px";
+          o.style.height = (25+o.scrollHeight)+"px";
+        }
+
         if (document.getElementById("headerH").value != null) {
             document.getElementById("header").value = document.getElementById("headerH").value;
             document.getElementById("header").disabled = true;

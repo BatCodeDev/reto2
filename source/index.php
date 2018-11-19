@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/grid.css">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Nanum+Gothic" rel="stylesheet">
     <style type="text/css">
-        #grid{
+        body{
             background-color: #D5F6F0;
         }
 
