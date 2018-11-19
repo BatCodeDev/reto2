@@ -45,22 +45,31 @@
                     }
 
                     if (isset($_GET["categoryName"])) {
-                        $idC = selectIdCategory($_GET["categoryName"]);
-                        $questions = selectQuestionByCategory($idC);
-                        for ($x = 0; $x < sizeof($questions); $x++){
-                        echo '<div class="divfoundQuestion">';
-                            echo '<div class="divVotes">';
+                        if ($_GET["categoryName"]=="seeAllCategory") {
+                            $resul = selectAllCategory();
+                            foreach ($resul as $row){
+                                echo "<div class='divfoundQuestion'>
+                                        <a href='searchForQuestion.php?categoryName=".$row["name"]."'>".strtoupper($row["name"])."</a></div>";
+                            }
+                        }else{
+                            $idC = selectIdCategory($_GET["categoryName"]);
+                            $questions = selectQuestionByCategory($idC);
 
-                            echo '</div>';
-                            echo '<div class="divQuestionInfo">';
-                                echo '<div class="questionHeader">';
-                                    echo '<a href="question.php?idQ='.$questions[$x]['id'].'">'.$questions[$x]["header"].'</a>';
+                            for ($x = 0; $x < sizeof($questions); $x++){
+                            echo '<div class="divfoundQuestion">';
+                                echo '<div class="divVotes">';
+
                                 echo '</div>';
-                                echo '<div class="questionData">';
-                                    echo $questions[$x]["raw_data"];
+                                echo '<div class="divQuestionInfo">';
+                                    echo '<div class="questionHeader">';
+                                        echo '<a href="question.php?idQ='.$questions[$x]['id'].'">'.$questions[$x]["header"].'</a>';
+                                    echo '</div>';
+                                    echo '<div class="questionData">';
+                                        echo $questions[$x]["raw_data"];
+                                    echo '</div>';
                                 echo '</div>';
                             echo '</div>';
-                        echo '</div>';
+                            }
                         }
                     }
 
