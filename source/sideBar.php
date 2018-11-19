@@ -43,15 +43,15 @@
         ?>
         <div class="navLinks">
             <!--<img src="img/logo.png"">-->
-            <a href="question.php">Formular una Pregunta</a>
+            <a href="question.php">FORMULAR UNA PREGUNTA</a>
         </div>
         <div class="navLinks">
             <!--<img src="img/history.png"">-->
-            <a href="searchForQuestion.php?history=true">Historial de preguntas</a>
+            <a href="searchForQuestion.php?history=true">MIS PREGUNTAS</a>
         </div>
         <div class="navLinks">
             <!--<img src="img/logo.png"">-->
-            <a href="">link</a>
+            <a href="searchForQuestion.php?favQ=true">MIS FAVORITOS</a>
         </div>
     </div>
 </nav>
