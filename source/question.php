@@ -117,7 +117,7 @@
                 <div class="divQuestion">
                     <h3>Cabecera</h3><input type="text" id="header" name="header" required maxlength="25">
                     <h3>Cuerpo</h3><textarea onkeyup="textAreaAdjust(this)" style="overflow:hidden" id="rawData" maxlength="255" name="rawData" required></textarea>
-                    <h3>Categoría</h3><input type="text" id="category" name="category" placeholder="Escribe o selecciona catergoría">
+                    <h3>Categoría</h3><input type="text" id="category" name="category" placeholder="Escribe o selecciona catergoría" maxlength="7">
                     <select id="selectCategory" onchange="selectCategoryF()">
                         <option selected>---</option>
                     <?php

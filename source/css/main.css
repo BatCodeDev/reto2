@@ -7,7 +7,8 @@ body{
 }
 header{        
     display: flex;
-    padding: 0.5em;        
+    padding: 0.5em;
+    height: 60px;   
 }
 header{
     grid-column: 1 / 11;
@@ -48,15 +49,14 @@ footer{
     align-self: right;
 }
 #divLogo{
-    width: 5%;
+    width: 100px;
 }
 #divLogo img{
-    height: auto;
-    width: 74%;
+    width: 100px;
 }
 #divSearch{
     width: 50%;
-    margin: 1% 0;
+    margin: 5px 3%;
 }
 #divSearch input {
     border: 1px solid;
@@ -74,7 +74,7 @@ footer{
 #divNavTrigger{
     width: 82.19px;
     height: 82.19px;
-    padding: 3% 20px 3% 20px;
+    padding: 10px 20px 10px 20px;
     position: absolute;
     right: 0;
     z-index: 3;
@@ -156,6 +156,24 @@ h2{
     padding: .5em;
 
 }
+#navBarContent #userProfile{ 
+    height: 90px;
+    border-bottom: 1px solid white;
+}
+#navBarContent #userProfile #userProfileLink{ 
+    margin-top: 15px; 
+}
+
+
+#navBarContent #userProfile a{ 
+    border: none;
+}
+
+#navBarContent #closeSession{
+    text-align: center;
+    padding-top: 100px;
+}
+
 .category{
     padding: auto auto;
     height: 2.5em;
@@ -191,14 +209,14 @@ h2{
         grid-row: 2 / 10;
     }
     #divLogo{
-        width: 20%;
+        /*width: 20%;*/
     }
     #divLogo img{    
-        width: 50% !important;
+        /*width: 50% !important;*/
     }
     #divSearch {
-        width: 50%;
-        margin: 3% 0;
+        /*width: 50%;
+        margin: 3% 0;*/
     }
     #questions{
         height: 60%;
@@ -218,13 +236,13 @@ h2{
         width: 125px !important;
     }
     #divLogo{
-        width: 30%;
+        /*width: 30%;*/
     }
     #divLogo img{    
-        width: 50% !important;
+        /*width: 50% !important;*/
     }
     #divSearch{    
-        margin: 5% 0 !important;
+        /*margin: 5% 0 !important;*/
     }
     .navLinks {
         height: auto;
