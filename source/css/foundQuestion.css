@@ -1,0 +1,72 @@
+#grid{
+    background-color: #D5F6F0;
+}
+
+header{
+    background-color: white;
+}
+
+#content{
+    width: 90%;
+    margin: 0 auto;
+}
+
+h2{
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+#found{
+    grid-column: 1 / 9;
+    grid-row: 2 / 10;
+    padding: 1em 1em .6em;
+
+    border: dashed 1px grey;
+    background-color: white;
+}
+
+#divFound{
+    width: 90%;
+}
+
+.divfoundQuestion{
+    background-color: #FC3667;
+    border-radius: 3px;
+    margin: 0.5em;
+    padding: 0.5em;
+    display: flex;
+}
+.divVotes{
+    text-align: center;
+}
+.divQuestionInfo{
+    width: 100%;
+    margin-left: 3%;
+}
+.questionHeader a{
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 1em;
+    text-decoration: none;
+    color: white;
+}
+.questionData{
+    overflow: hidden;
+    word-wrap: break-word;
+    display: flex;
+    justify-content: space-between;
+}
+#questionOwner{
+    float: right;
+}
+@media (min-width: 800px){
+
+}
+
+@media (max-width: 800px){
+    #found{
+        grid-column: 1 / 11;
+    }
+}
+
+@media (max-width: 450px){
+
+}
