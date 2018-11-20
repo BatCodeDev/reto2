@@ -4,14 +4,14 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Nanum+Gothic" rel="stylesheet">
     <div id="navBarHeader">
         <div id="navBarHeaderTxt">
-            <h2>Menu</h2>
+            <h2>MENÚ</h2>
         </div>
     </div>
     <div id="navBarContent">
         <?php
         if(isset($_SESSION['user'])){
         ?>
-        <div class="navLinks">
+        <div class="navLinks"  id="userProfile">
         <a href="profile.php?id=<?=$_SESSION['user']["userId"]?>">
             <?php
             if (isset($_SESSION["user"]["userPhoto"])) {
@@ -27,8 +27,8 @@
             }
             ?>
             </a>
-                <a href="profile.php?id=<?=$_SESSION['user']["userId"]?>"><?=$_SESSION['user']["userName"]?></a>
-                <form action="logOut.php"><button type="submit">Cerrar Sesión</button></form>
+                <a id="userProfileLink" href="profile.php?id=<?=$_SESSION['user']["userId"]?>"><?=$_SESSION['user']["userName"]?></a>
+                
         </div>
             <?php
         }else{
@@ -36,7 +36,7 @@
             <div class="navLinks">
                 <!--<img src="img/profile.png">-->
                 <!--<img id="loginImg" src="img/login.png">-->
-                <a href="loginRegistry.php">Login/Registro</a>
+                <a href="loginRegistry.php">LOGIN/REGISTRO</a>
             </div>
             <?php
         }
@@ -53,5 +53,11 @@
             <!--<img src="img/logo.png"">-->
             <a href="searchForQuestion.php?favQ=true">MIS FAVORITOS</a>
         </div>
+        <br>
+        <?php
+            if(isset($_SESSION['user'])){
+            echo '<form id="closeSession" action="logOut.php"><button type="submit">Cerrar Sesión</button></form>';
+            }
+        ?>
     </div>
 </nav>

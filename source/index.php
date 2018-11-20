@@ -14,7 +14,6 @@
 
         header{
             background-color: white;
-            height: auto;
         }
 
         h2{
@@ -66,6 +65,11 @@
             margin: .1em;
 
         }
+
+        #seeAllCategory{
+            color: #FC3667;
+            text-align: center;
+        }
         
     </style>
 
@@ -86,12 +90,17 @@
                 <h2>Categorias:</h2>
                 <div class="verticalTxt">
                     <?php
-                        $resul = selectAllCategory();
+                        $resul = selectIndexCategory();
                             foreach ($resul as $row){
                                 echo "<div class='category'>
                                         <a href='searchForQuestion.php?categoryName=".$row["name"]."'>".strtoupper($row["name"])."</a></div>";
                             }
+                        if (isset($resul)) {
+                            echo "<div class='category'>
+                                        <a href='searchForQuestion.php?categoryName=seeAllCategory'>TODOS</a></div>";
+                        }
                     ?>
+                    <a id="seeAllCategory" href='searchForQuestion.php?categoryName=seeAllCategory'>VER TODOS</a>
                 </div>
             </div>
             <div id="questions">
