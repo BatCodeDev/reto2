@@ -48,8 +48,8 @@
                         if ($_GET["categoryName"]=="seeAllCategory") {
                             $resul = selectAllCategory();
                             foreach ($resul as $row){
-                                echo "<div class='divfoundQuestion'>
-                                        <a href='searchForQuestion.php?categoryName=".$row["name"]."'>".strtoupper($row["name"])."</a></div>";
+                                echo "<div class='divfoundQuestion'><div class='questionHeader'>
+                                        <a href='searchForQuestion.php?categoryName=".$row["name"]."'>".strtoupper($row["name"])."</a></div></div>";
                             }
                         }else{
                             $idC = selectIdCategory($_GET["categoryName"]);
