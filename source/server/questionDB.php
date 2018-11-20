@@ -71,6 +71,18 @@ function searchQuestionHeader($data){
     $dbh = null;
     return $resul;
 }
+function selectOwnerOfQuestion($data){
+    $dbh = connect();
+
+    $stmt = $dbh -> prepare("SELECT id_profile FROM question where id = :id");
+
+    $stmt -> execute(array(
+        "id" => $data
+    ));
+    $resul = $stmt->fetch(PDO::FETCH_ASSOC);
+    $dbh = null;
+    return $resul["id_profile"];
+}
 
 	/*
 
