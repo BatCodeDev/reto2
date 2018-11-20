@@ -5,18 +5,16 @@
  * Date: 14/11/2018
  * Time: 9:25
  */
-include_once 'conection.php';
+include_once 'connection.php';
 
 
-function save($url,$question)
+ function save($url)
 {
-    //$url='aweq';$question=111111;
     $conexion=connect();
-    $consulta = $conexion->prepare('INSERT INTO archive (url,id_question)
-                                        VALUES (:url,:id_question)');
+    $consulta = $conexion->prepare('INSERT INTO archive (url)
+                                        VALUES (:url)');
     $consulta->execute(array(
-        ":url" => $url,
-        ":id_question" => $question
+        ":url" => $url
     ));
     echo 'Su archivo ha sido subido.';
     $conexion = null;
@@ -24,15 +22,17 @@ function save($url,$question)
 }
 
 
+
+
 function getLastArchive()
 {
     $conexion = connect();
     $consulta = $conexion->prepare('
-            SELECT max(id) 
+            SELECT max(id) as id
             FROM archive
             ');
     $consulta->execute();
-    $question = $consulta->fetchObject(PDO::FETCH_ASSOC);
+    $question = $consulta->fetchObject();
 
     $conexion=null;
     return $question;
@@ -41,16 +41,14 @@ function getLastArchive()
 
 function getAllByQuestion($id_question)
 {
-    $archives = [];
     $conexion = connect();
     $consulta = $conexion->prepare('
             SELECT id,url 
             FROM archive
             WHERE id_question=:id_question');
     $consulta->execute(array(":id_question" => $id_question));
-    while($ar = $consulta->fetchObject()) {
-        array_push($archives, $ar);
-    }
+    $archives = $consulta->fetchAll();
+
     $conexion=null;
     return $archives;
 
@@ -58,19 +56,17 @@ function getAllByQuestion($id_question)
 
 
 
-function update($url,$question,$idArchive)
+function update($question)
 {
 
     $conexion= connect();
     try {
         $consulta = $conexion->prepare('
                 UPDATE archive 
-                SET url = :url, id_question = :id_question
-                WHERE id = :id');
-        $update = $consulta->execute(array(
-            "url" => $url,
+                SET  id_question = :id_question
+                WHERE id_question IS null ');
+        $consulta->execute(array(
             "id_question" => $question,
-            "id" => $idArchive
         ));
         //COMPROBAMOS QUE SE HA HECHO EL UPDATE
         $rows=$consulta->rowCount();
@@ -79,7 +75,7 @@ function update($url,$question,$idArchive)
             return true;
         }
         else {
-            echo 'La actualización de perfil no se ha podido realizar.<br>'
+            echo 'La actualización de archivo no se ha podido realizar.<br>'
                 . 'Inténtelo de nuevo más tarde.';
             return false;
 
@@ -112,3 +108,4 @@ function remove($id)
     }
 
 }
+
