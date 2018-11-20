@@ -21,6 +21,20 @@
 
 	}
 
+    function selectCountFavourites($idQuestion){
+        $dbh = connect();
+        $stmt = $dbh -> prepare("SELECT COUNT(id_question) as votes FROM favourite where id_question = :idQ");
+        $stmt -> execute(
+            array(
+                "idQ"=>$idQuestion
+            )
+        );
+        $resul = $stmt->fetch(PDO::FETCH_ASSOC);
+        $dbh = null;
+        return $resul["votes"];
+
+    }
+
 	function insertFavouriteQuestion($idProfile, $idQuestion){
         $dbh = connect();
 		//INSERT CATEGORY
