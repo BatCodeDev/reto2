@@ -48,6 +48,9 @@ h2{
     overflow: hidden;
     word-wrap: break-word;
 }
+#questionOwner{
+    float: right;
+}
 @media (min-width: 800px){
 
 }

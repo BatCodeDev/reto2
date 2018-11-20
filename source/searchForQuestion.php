@@ -3,6 +3,7 @@
         include ("server/questionDB.php");       
         include ("server/categoryDB.php"); 
         include ("server/favouriteDB.php");
+        include ("server/profileDB.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,6 +29,7 @@
                     if (isset($_POST["searchQuestion"])) {
                         $questions = searchQuestionHeader($_POST["searchQuestion"]);
                         for ($x = 0; $x < sizeof($questions); $x++){
+                            $owner = selectDataProfile(selectOwnerOfQuestion($questions[$x]['id']));
                         echo '<div class="divfoundQuestion">';
                             echo '<div class="divVotes">';
 
@@ -38,6 +40,7 @@
                                 echo '</div>';
                                 echo '<div class="questionData">';
                                     echo $questions[$x]["raw_data"];
+                                echo '<div id="questionOwner">'.$owner[0]["name"]." \"".$owner[0]["user"]."\" ".$owner[0]["surname"].'</div>';
                                 echo '</div>';
                             echo '</div>';
                         echo '</div>';
@@ -56,6 +59,7 @@
                             $questions = selectQuestionByCategory($idC);
 
                             for ($x = 0; $x < sizeof($questions); $x++){
+                                $owner = selectDataProfile(selectOwnerOfQuestion($questions[$x]['id']));
                             echo '<div class="divfoundQuestion">';
                                 echo '<div class="divVotes">';
 
@@ -66,6 +70,7 @@
                                     echo '</div>';
                                     echo '<div class="questionData">';
                                         echo $questions[$x]["raw_data"];
+                                    echo '<div id="questionOwner">'.$owner[0]["name"]." \"".$owner[0]["user"]."\" ".$owner[0]["surname"].'</div>';
                                     echo '</div>';
                                 echo '</div>';
                             echo '</div>';
