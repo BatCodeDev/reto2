@@ -106,10 +106,7 @@ footer{
 .verticalHeader{
     height: 10%;
 }
-
 .verticalTxt{
-    height: 100%;
-
     padding: 1em .5em;
     display: flex;
     justify-content: space-around;
@@ -178,7 +175,6 @@ h2{
 }
 
 .category{
-    margin-top: 3%;
     padding: auto auto;
     height: 2.5em;
     width: 5em ;
@@ -225,7 +221,6 @@ h2{
     #questions{
         height: 60%;
     }
-  
     .navLinks{
         height: auto;
     }
@@ -234,12 +229,6 @@ h2{
     }
     .toggle{
         width: 40% !important;
-
-        height: 20% !important;
-    }
-    #navBarHeader {
-        height: 15%;
-
     }
 }
 @media (max-width: 450px){
@@ -261,14 +250,7 @@ h2{
     #navBarHeader {
         height: 10%;
     }
-
     .toggle{
         width: 60% !important;
-    }
-    .navLinks {
-        height: 10% !important;
-    }
-    #navBarHeader {
-        height: 10%;
     }
 }
