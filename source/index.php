@@ -93,11 +93,7 @@
                         $resul = selectIndexCategory();
                             foreach ($resul as $row){
                                 echo "<div class='category'>
-
                                         <a href='searchForQuestion.php?categoryName=".$row["name"]."'>".strtoupper($row["name"])."</a></div>";
-
-                                        <a href=''>".$row["name"]."</a></div>";
-
                             }
                         if (isset($resul)) {
                             echo "<div class='category'>
@@ -114,11 +110,7 @@
                         <?php
                             $resul = selectRecientQuestion();
                             foreach ($resul as $row){
-
                                 echo "<a href='question.php?idQ=".$row["id"]."'><p>".strtoupper($row["header"])." ".substr($row["dateQ"], 0, -9).PHP_EOL."</p></a>";
-
-                                echo "<a href='question.php?idQ=".$row["id"]."'>".$row["header"]." ".$row["dateQ"].PHP_EOL."</a><br>";
-
                             }
                         ?>
                     </div>
