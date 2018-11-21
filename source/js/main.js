@@ -6,8 +6,6 @@ $(window).resize(function(){
     $("body").height($(window).height());
     $("#grid").height($(window).height());
     if($(window).width() > 800){
-      
-        //alert($(window).width());
         $("#navBar").removeClass("toggle");
         $("#fullfade").fadeOut(200);
         $("#divNavTrigger").removeClass("trigger");
@@ -35,6 +33,34 @@ function request2server(idForm, target) {
                 case "errorUpdate":
                     $("#errorRegistry").html("Datos introducidos incorrectos");
                     break;
+            }
+        },
+        error: function () {
+            console.log("ok");
+        }
+    });
+    return false;
+}
+
+function request2server2(idForm, target) {
+    debugger;
+    //var name = idForm.file2.name;
+    //var val = idForm.file2.value;
+    //var form_data = name+"="+val;
+    var form_data=$('#'+idform).serialize();
+    debugger;
+    $.ajax({
+        url: target,
+        data: form_data,
+        type: "POST",
+        success: function (data) {
+            //debugger;
+            switch (data){
+                case "success":
+                   // alert("hhhhhhhhh");
+                    $("#errorRegistry").html("Correcto");
+                    break;
+
             }
         },
         error: function () {
