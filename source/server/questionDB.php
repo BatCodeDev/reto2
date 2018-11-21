@@ -96,11 +96,11 @@ function getLastQuestion()
 {
     $conexion = connect();
     $consulta = $conexion->prepare('
-            SELECT max(id) as id
+            SELECT max(id) 
             FROM question
             ');
     $consulta->execute();
-    $question = $consulta->fetchObject();
+    $question = $consulta->fetchObject(PDO::FETCH_ASSOC);
 
     $conexion=null;
     return $question;
