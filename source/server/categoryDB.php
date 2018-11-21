@@ -10,7 +10,6 @@
 		return $resul;
 	}
 
-
 	function selectAllCategory(){
 		$dbh = connect();
 		$stmt = $dbh -> prepare("SELECT name FROM category");
@@ -20,7 +19,6 @@
 		$dbh = null;
 		return $resul;
 	}
-
 
 	function selectCategoryById($id){
 		$dbh = connect();
