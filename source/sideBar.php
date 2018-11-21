@@ -42,21 +42,12 @@
         }
         ?>
         <div class="navLinks">
-
             <!--<img src="img/logo.png"">-->
             <a href="question.php">FORMULAR UNA PREGUNTA</a>
         </div>
         <div class="navLinks">
             <!--<img src="img/history.png"">-->
             <a href="searchForQuestion.php?history=true">MIS PREGUNTAS</a>
-
-            <img src="img/logo.png"">
-            <a href="question.php">Formular una Pregunta</a>
-        </div>
-        <div class="navLinks">
-            <img src="img/history.png"">
-            <a href="">Historial de preguntas</a>
-
         </div>
         <div class="navLinks">
             <!--<img src="img/logo.png"">-->
