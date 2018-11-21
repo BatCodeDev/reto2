@@ -86,9 +86,25 @@
             padding-top: 0px;
             margin: 5px 0px;
             width: 100%;
-
+            display: flex;
         }
-
+        .votes{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            width: 20% !important;
+            border: 0 !important;
+        }
+        .votes>div{
+            width: 100% !important;
+            margin-bottom: 0 !important;
+        }
+        .answerTxt{
+            display: flex;
+            flex-direction: column;
+            width: 80% !important;
+            border: 0 !important;
+        }
         #answerDiv div *{
             margin-top: 0px;
 
@@ -183,8 +199,14 @@
                     $resulF = selectRecientAnswer($_GET["idQ"]);
                     foreach ($resulF as $rowQ){
                         $userName = selectNameProfile($rowQ["id_profile"]);
-                        echo "<div>".
-                        "<h3>".$userName."</h3>"."<p>".$rowQ["raw_data"]."</p>"
+                        $target = '"server/favouriteAnswer.php"';
+                        echo "<div><div id='v".$rowQ['id']."' class='votes'>Votos<br>0<br><form id='".$rowQ['id']."favouriteAnswerForm' 
+                            onsubmit='return request2server(this.id,$target)'>
+                            <input type='hidden' name='ansId' value='".$rowQ['id']."'>
+                            <input type='hidden' name='profId' value='".$rowQ["id_profile"]."'>
+                            <input type='hidden' name='divId' value='v".$rowQ["id"]."'>
+                            <button type='submit'>Votar</button></form></div>".
+                        "<div class='answerTxt'><h3>".$userName."</h3>"."<p>".$rowQ["raw_data"]."</p></div>"
                         ."</div>";
                     }
                 }
