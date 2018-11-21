@@ -21,6 +21,7 @@
 
 	}
 
+
     function selectCountFavourites($idQuestion){
         $dbh = connect();
         $stmt = $dbh -> prepare("SELECT COUNT(id_question) as votes FROM favourite where id_question = :idQ");
@@ -34,6 +35,7 @@
         return $resul["votes"];
 
     }
+
 
 	function insertFavouriteQuestion($idProfile, $idQuestion){
         $dbh = connect();

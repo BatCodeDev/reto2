@@ -71,6 +71,7 @@ function searchQuestionHeader($data){
     $dbh = null;
     return $resul;
 }
+
 function selectOwnerOfQuestion($data){
     $dbh = connect();
 
@@ -82,6 +83,28 @@ function selectOwnerOfQuestion($data){
     $resul = $stmt->fetch(PDO::FETCH_ASSOC);
     $dbh = null;
     return $resul["id_profile"];
+}
+
+
+
+/**
+ * Funcion para sacar la ultima pregunta, y asi poder utilizar su id
+ * para insertarle el archivo cuando se hace submit a una pregunta.
+ *
+ */
+function getLastQuestion()
+{
+    $conexion = connect();
+    $consulta = $conexion->prepare('
+            SELECT max(id) as id
+            FROM question
+            ');
+    $consulta->execute();
+    $question = $consulta->fetchObject();
+
+    $conexion=null;
+    return $question;
+
 }
 
 	/*
