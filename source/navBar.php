@@ -14,6 +14,6 @@
         <div class="divNavAxis"></div>
     </div>
 </header>
-<footer>
+<!--<footer>
     footer
-</footer>
+</footer>-->

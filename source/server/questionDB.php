@@ -4,7 +4,7 @@
 	//SELECT RECIENTE QUESTION TO INDEX
 	function selectRecientQuestion(){
 		$dbh = connect();
-		$stmt = $dbh -> prepare("SELECT * FROM question ORDER BY dateQ DESC LIMIT 3");
+		$stmt = $dbh -> prepare("SELECT * FROM question ORDER BY dateQ DESC LIMIT 5");
 		$stmt -> execute();
 
 		$resul = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -17,6 +17,28 @@
 		$dbh = connect();
 		$data = array("id" => $id);
 		$stmt = $dbh -> prepare("SELECT * FROM question where id = :id");
+		$stmt -> execute($data);
+
+		$resul = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		$dbh = null;
+		return $resul;
+	}
+
+	function selectAllQuestionByIdProfile($idProfile){
+		$dbh = connect();
+		$data = array("id" => $idProfile);
+		$stmt = $dbh -> prepare("SELECT * FROM question where id_profile = :id ORDER BY dateQ DESC");
+		$stmt -> execute($data);
+
+		$resul = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		$dbh = null;
+		return $resul;
+	}
+
+	function selectQuestionByCategory($idCategory){
+		$dbh = connect();
+		$data = array("idCategory" => $idCategory);
+		$stmt = $dbh -> prepare("SELECT * FROM question where id_category = :idCategory");
 		$stmt -> execute($data);
 
 		$resul = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -50,6 +72,21 @@ function searchQuestionHeader($data){
     return $resul;
 }
 
+function selectOwnerOfQuestion($data){
+    $dbh = connect();
+
+    $stmt = $dbh -> prepare("SELECT id_profile FROM question where id = :id");
+
+    $stmt -> execute(array(
+        "id" => $data
+    ));
+    $resul = $stmt->fetch(PDO::FETCH_ASSOC);
+    $dbh = null;
+    return $resul["id_profile"];
+}
+
+
+
 /**
  * Funcion para sacar la ultima pregunta, y asi poder utilizar su id
  * para insertarle el archivo cuando se hace submit a una pregunta.
@@ -69,6 +106,7 @@ function getLastQuestion()
     return $question;
 
 }
+
 	/*
 
 

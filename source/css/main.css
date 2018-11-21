@@ -3,10 +3,12 @@
 }
 body{
     margin: 0;    
+    background-color: #D5F6F0;
 }
 header{        
     display: flex;
-    padding: 0.5em;        
+    padding: 0.5em;
+    height: 60px;   
 }
 header{
     grid-column: 1 / 11;
@@ -17,7 +19,7 @@ header{
     flex-direction: column;
 }
 #content{
-    grid-column: 1 / 11;
+    grid-column: 1 / 9;
     grid-row: 2 / 10;
 }
 footer{
@@ -47,15 +49,14 @@ footer{
     align-self: right;
 }
 #divLogo{
-    width: 5%;
+    width: 100px;
 }
 #divLogo img{
-    height: auto;
-    width: 74%;
+    width: 100px;
 }
 #divSearch{
     width: 50%;
-    margin: 1% 0;
+    margin: 5px 3%;
 }
 #divSearch input {
     border: 1px solid;
@@ -73,7 +74,7 @@ footer{
 #divNavTrigger{
     width: 82.19px;
     height: 82.19px;
-    padding: 3% 20px 3% 20px;
+    padding: 10px 20px 10px 20px;
     position: absolute;
     right: 0;
     z-index: 3;
@@ -82,7 +83,7 @@ footer{
     width: 100%;
     height: 3px;
     background: black;
-    margin-bottom: 30%;
+    margin-bottom: 29%;
     transition: transform .4s;
 }
 .trigger>div:first-of-type{
@@ -99,15 +100,16 @@ footer{
     padding: .5em;
 }
 .verticalHalf{
-    height: 50%;
-    width: 100%;
+    height: auto;
     padding: .5em;
 }
 .verticalHeader{
     height: 10%;
 }
+
 .verticalTxt{
     height: 100%;
+
     padding: 1em .5em;
     display: flex;
     justify-content: space-around;
@@ -122,7 +124,7 @@ h2{
 }
 #navBarContent{
     height: 90%;
-    background: lightgreen;
+    background: #FC3667;
 }
 #navBarHeaderTxt{
     width: 70%;    
@@ -131,39 +133,63 @@ h2{
 }
 #navBarContent a{
     display: block;
-    width: 80%;
-    padding: .5em;
     float: left;
-    color: black;
+    color: white;
     text-decoration: none;
-    margin-top: 2%;
+    font-size: 1.5em;
+    padding: 2% 0%;
+    font-family: 'Nanum Gothic', sans-serif;
+    border-bottom: 1px solid white;
 }
 #navBarContent img{
     height: auto;
-    width: 20%;
-    float: left;    
+    float: left;
+    height: 60px;
+    width: 60px;
+    margin-right: 10px;
 }
+
+
 #userImg{
     border-radius: 50%;
 }
 .navLinks{        
     width: 100%;
-    height: 10%;
+    height: auto;
     padding: .5em;
+
 }
+#navBarContent #userProfile{ 
+    height: 90px;
+    border-bottom: 1px solid white;
+}
+#navBarContent #userProfile #userProfileLink{ 
+    margin-top: 15px; 
+}
+
+
+#navBarContent #userProfile a{ 
+    border: none;
+}
+
+#navBarContent #closeSession{
+    text-align: center;
+    padding-top: 100px;
+}
+
 .category{
     margin-top: 3%;
     padding: auto auto;
     height: 2.5em;
     width: 5em ;
-    background: lightblue;
+    background: #D5F6F0;
     text-align: center;
     border-radius: 12px;
 }
 #userImg{
     /*height: 38px !important;*/
 }
-@media (min-width: 800px){
+@media (min-width: 1000px){
     #divNavTrigger{
         display: none;
     }
@@ -171,32 +197,49 @@ h2{
         width: 20%;
     }
     .verticalTxt{
-        width: 80% !important;
+        width: 100% !important;
     }
     #questions{
         display: flex;
         width: 80%;
     }
 }
-@media (max-width: 800px){
+@media (max-width: 1000px){
+    .verticalTxt {
+        width: 100%;
+    }
+    #content{
+        grid-column: 1 / 11;
+        grid-row: 2 / 10;
+    }
     #divLogo{
-        width: 20%;
+        /*width: 20%;*/
     }
     #divLogo img{    
-        width: 50% !important;
+        /*width: 50% !important;*/
     }
     #divSearch {
-        width: 50%;
-        margin: 3% 0;
+        /*width: 50%;
+        margin: 3% 0;*/
     }
     #questions{
         height: 60%;
     }
+  
     .navLinks{
+        height: auto;
+    }
+    #navBarHeader {
+        height: 15%;
+    }
+    .toggle{
+        width: 40% !important;
+
         height: 20% !important;
     }
     #navBarHeader {
         height: 15%;
+
     }
 }
 @media (max-width: 450px){
@@ -204,13 +247,23 @@ h2{
         width: 125px !important;
     }
     #divLogo{
-        width: 30%;
+        /*width: 30%;*/
     }
     #divLogo img{    
-        width: 50% !important;
+        /*width: 50% !important;*/
     }
     #divSearch{    
-        margin: 5% 0 !important;
+        /*margin: 5% 0 !important;*/
+    }
+    .navLinks {
+        height: auto;
+    }
+    #navBarHeader {
+        height: 10%;
+    }
+
+    .toggle{
+        width: 60% !important;
     }
     .navLinks {
         height: 10% !important;
