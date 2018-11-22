@@ -11,6 +11,16 @@
 		return $resul;
 	}
 
+    function selectFavouriteAnswer(){
+        $dbh = connect();
+        $stmt = $dbh -> prepare("SELECT id_question FROM favourite GROUP BY id_question ORDER BY COUNT(id_question) DESC LIMIT 3");
+        $stmt -> execute();
+
+        $resul = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $dbh = null;
+        return $resul;
+    }
+
 	function selectFavouriteUserQuestion($idProfile){
 		$dbh = connect();
 		$stmt = $dbh -> prepare("SELECT id_question from favourite where id_profile =".$idProfile);
@@ -21,12 +31,39 @@
 
 	}
 
+    function selectFavouriteUserAnswer($idProfile, $idAnswer){
+        $dbh = connect();
+        $stmt = $dbh -> prepare("SELECT count(id_answer) as fav from favourite where id_profile = :idProf and id_answer = :idAns");
+        $stmt -> execute(array(
+            "idProf"=>$idProfile,
+            "idAns"=>$idAnswer
+        ));
+        $resul = $stmt->fetch(PDO::FETCH_ASSOC);
+        $dbh = null;
+        return $resul["fav"];
+
+    }
+
     function selectCountFavourites($idQuestion){
         $dbh = connect();
         $stmt = $dbh -> prepare("SELECT COUNT(id_question) as votes FROM favourite where id_question = :idQ");
         $stmt -> execute(
             array(
                 "idQ"=>$idQuestion
+            )
+        );
+        $resul = $stmt->fetch(PDO::FETCH_ASSOC);
+        $dbh = null;
+        return $resul["votes"];
+
+    }
+
+    function selectCountFavouritesAns($idAnswers){
+        $dbh = connect();
+        $stmt = $dbh -> prepare("SELECT COUNT(id_answer) as votes FROM favourite where id_answer = :idQ");
+        $stmt -> execute(
+            array(
+                "idQ"=>$idAnswers
             )
         );
         $resul = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -49,6 +86,19 @@
         $dbh = null;
 	}
 
+    function insertFavouriteAnswer($idProfile, $idAnswer){
+        $dbh = connect();
+        $data = array(
+            "idProfile" => $idProfile,
+            "type" => "A",
+            "idAnswer" => $idAnswer
+        );
+        $stmt = $dbh -> prepare("INSERT INTO favourite (id_profile, type, id_answer) values (:idProfile, :type, :idAnswer)");
+
+        $stmt -> execute($data);
+        $dbh = null;
+    }
+
 	function deleteFavouriteQuestion($idProfile, $idQuestion){
         $dbh = connect();
 		//INSERT CATEGORY
@@ -56,4 +106,15 @@
 		$stmt -> execute();
         $dbh = null;
 	}
+
+    function deleteFavouriteAnswer($idProfile, $idQuestion){
+        $dbh = connect();
+        //INSERT CATEGORY
+        $stmt = $dbh -> prepare("DELETE FROM favourite WHERE id_profile = :idProf AND id_answer = :ifAns");
+        $stmt -> execute(array(
+            "idProf"=>$idProfile,
+            "ifAns"=>$idQuestion
+        ));
+        $dbh = null;
+    }
 ?>

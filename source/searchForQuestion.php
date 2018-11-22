@@ -70,7 +70,7 @@
                                     echo '</div>';
                                     echo '<div class="questionData">';
                                         echo $questions[$x]["raw_data"];
-                                    echo '<div id="questionOwner">'.$owner[0]["name"]." \"".$owner[0]["user"]."\" ".$owner[0]["surname"].'</div>';
+                                    echo '<div id="questionOwner">'.$owner[0]["user"].'</div>';
                                     echo '</div>';
                                 echo '</div>';
                             echo '</div>';
