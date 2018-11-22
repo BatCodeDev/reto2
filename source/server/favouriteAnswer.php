@@ -4,5 +4,9 @@
     $profId = $_POST["profId"];
     $divId = $_POST["divId"];
     echo '{"reload":"'.$divId.'"}';
-    insertFavouriteAnswer($profId, $ansId);
+    if($_GET["action"]=="fav") {
+        insertFavouriteAnswer($profId, $ansId);
+    }else{
+        deleteFavouriteAnswer($profId, $ansId);
+    }
 ?>
