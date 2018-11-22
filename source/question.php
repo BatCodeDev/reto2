@@ -109,6 +109,15 @@
             margin-top: 0px;
 
         }
+        #urls a
+        {
+            color:indianred;
+            text-decoration:none;
+        }
+        #urls a:hover
+        {
+            color:aqua;
+        }
 
 
     </style>
@@ -126,13 +135,75 @@
             include_once "server/categoryDB.php";
             include_once "server/answerDB.php";
             include_once "server/profileDB.php";
+            include_once "server/archiveDB.php";
+            include_once 'archiveUpload.php';
             $userImg = "img/alexddo.png";
         ?>
         <div id="content">
-            <form method="POST">
+            <?php
+            /*
+            if(!isset($_GET["idQ"]))
+            {
+                ?>
+                <h3>Subir archivos</h3>
+                <form id="archiveForm"  enctype="multipart/form-data" onsubmit="return request2server2(this, './archiveUpload.php')">
+                    <input type="file" name="file2">
+                    <button type="reset">Descartar</button>
+                    <button type="submit" name="send">Aceptar</button>
+                </form>
+                <div id="errorUpload">
+
+                </div>
+                <?php
+            }
+            ?>
+            */
+            ?>
+            <form id="questionForm" method="POST" enctype="multipart/form-data" onsubmit="return request2server2(this, './archiveUpload.php')">
                 <div class="divQuestion">
                     <h3>Cabecera</h3><input type="text" id="header" name="header" required maxlength="25">
                     <h3>Cuerpo</h3><textarea onkeyup="textAreaAdjust(this)" style="overflow:hidden" id="rawData" maxlength="255" name="rawData" required></textarea>
+                    <?php
+                    /*
+                     *onsubmit="return request2server2(this.id, 'archiveUpload.php')"
+                     *
+                     */
+
+                    if(isset($_GET["idQ"]))
+                    {
+                        ?>
+                    <div id="urls">
+                        <h3>Link</h3>
+                        <?php
+                            $question=getLastQuestion();
+                            $question2=$question->id;
+                            $archives=getAllByQuestion($question2);
+                            foreach ($archives as $key=>$value)
+                            {
+                                $url= substr($value['url'],2);
+                                ?>
+                                <a href="<?php echo $url ?>"><?php echo $url?> </a><br>
+                                <?php
+                            }
+                        ?>
+                    </div>
+                    <?php
+                    }
+                    else
+                    {
+                        ?>
+                        <h3>Subir archivo</h3>
+
+                            <input type="file" name="file2">
+
+
+                        <div id="errorUpload">
+
+                        </div>
+                        <?php
+
+                    }
+                    ?>
                     <h3>Categoría</h3><input type="text" id="category" name="category" placeholder="Escribe o selecciona catergoría" maxlength="7">
                     <select id="selectCategory" onchange="selectCategoryF()">
                         <option selected>---</option>
@@ -148,7 +219,10 @@
                 </div>
             </form>
 
+
             <?php
+
+
             if (isset($_POST["subQuestion"])) {
                 $idCategory = selectIdCategory($_POST["category"]);
                 if ($idCategory == null) {
@@ -156,6 +230,13 @@
                     $idCategory = selectIdCategory($_POST["category"]);
                 }
                 insertQuestion($_POST["header"], $_POST["rawData"], date("m-d-Y H:i:s"), $_SESSION["user"]["userId"], $idCategory);
+            }
+
+            if (isset($_POST["subQuestion"])) {
+                $question=getLastQuestion();
+                $question2=$question->id;
+                //var_dump(die($question2));
+                update($question2);
             }
 
             if (isset($_POST["subAnswer"])) {
@@ -211,6 +292,7 @@
                     }
                 }
             ?>
+
         </div>
         <?php
             if (isset($_GET["idQ"])) {
@@ -226,11 +308,8 @@
 
                 }
             }
-
-            
-
-
         ?>
+
     </div>
 </body>
     <script type="text/javascript">

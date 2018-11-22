@@ -54,6 +54,21 @@ function request2server(idForm, target) {
     });
     return false;
 }
+
+function request2server2(idForm, target) {
+    var imagen = new FormData($('#'+idForm)[0]);
+
+    $.ajax({
+        type:'post',
+        url:target,
+        data:imagen,
+        contentType:false,
+        processData:false
+
+    })
+    return false;
+}
+
 function toggleNavbar() {
     toggle($('#navBar'), 'toggle');
     toggle($('#divNavTrigger'), 'trigger');
