@@ -43,32 +43,19 @@ function request2server(idForm, target) {
 }
 
 function request2server2(idForm, target) {
-    debugger;
-    //var name = idForm.file2.name;
-    //var val = idForm.file2.value;
-    //var form_data = name+"="+val;
-    var form_data=$('#'+idform).serialize();
-    debugger;
-    $.ajax({
-        url: target,
-        data: form_data,
-        type: "POST",
-        success: function (data) {
-            //debugger;
-            switch (data){
-                case "success":
-                   // alert("hhhhhhhhh");
-                    $("#errorRegistry").html("Correcto");
-                    break;
+    var imagen = new FormData($('#'+idForm)[0]);
 
-            }
-        },
-        error: function () {
-            console.log("ok");
-        }
-    });
+    $.ajax({
+        type:'post',
+        url:target,
+        data:imagen,
+        contentType:false,
+        processData:false
+
+    })
     return false;
 }
+
 function toggleNavbar() {
     toggle($('#navBar'), 'toggle');
     toggle($('#divNavTrigger'), 'trigger');
