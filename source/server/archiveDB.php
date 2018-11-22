@@ -21,7 +21,6 @@ include_once 'connection.php';
     $consulta->execute(array(
         ":url" => $url
     ));
-    echo 'Su archivo ha sido subido.';
     $conexion = null;
     return true;
 }
@@ -89,12 +88,10 @@ function update($question)
         //COMPROBAMOS QUE SE HA HECHO EL UPDATE
         $rows=$consulta->rowCount();
         if( $rows> -1) {
-            echo "El archivo se ha modificadp correctamente.";
+
             return true;
         }
         else {
-            echo 'La actualización de archivo no se ha podido realizar.<br>'
-                . 'Inténtelo de nuevo más tarde.';
             return false;
 
         }
@@ -120,7 +117,6 @@ function remove($id)
         $remove->execute(array(
             "id" => $id
         ));
-        echo 'El archivo ha sido dado de baja.';
         return true;
         $conexion = null;
     }
