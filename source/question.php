@@ -118,7 +118,11 @@
         {
             color:aqua;
         }
-
+        @media (min-width: 800px){
+            .votes{
+                width: 10% !important;
+            }
+        }
 
     </style>
 </head>
@@ -279,14 +283,22 @@
                     echo "</form>";
                     $resulF = selectRecientAnswer($_GET["idQ"]);
                     foreach ($resulF as $rowQ){
+                        $votesAns = selectCountFavouritesAns($rowQ["id"]);
                         $userName = selectNameProfile($rowQ["id_profile"]);
-                        $target = '"server/favouriteAnswer.php"';
-                        echo "<div><div id='v".$rowQ['id']."' class='votes'>Votos<br>0<br><form id='".$rowQ['id']."favouriteAnswerForm' 
+                        $favAns = selectFavouriteUserAnswer($_SESSION['user']["userId"], $rowQ["id"]);
+                        if($favAns == 1){
+                            $target = '"server/favouriteAnswer.php?action=unfav"';
+                            $butt = "Quitar";
+                        }else{
+                            $target = '"server/favouriteAnswer.php?action=fav"';
+                            $butt = "Votar";
+                        }
+                        echo "<div><div id='v".$rowQ['id']."' class='votes'>Votos<br>".$votesAns."<br><form id='".$rowQ['id']."favouriteAnswerForm' 
                             onsubmit='return request2server(this.id,$target)'>
                             <input type='hidden' name='ansId' value='".$rowQ['id']."'>
-                            <input type='hidden' name='profId' value='".$rowQ["id_profile"]."'>
+                            <input type='hidden' name='profId' value='".$_SESSION['user']["userId"]."'>
                             <input type='hidden' name='divId' value='v".$rowQ["id"]."'>
-                            <button type='submit'>Votar</button></form></div>".
+                            <button type='submit'>".$butt."</button></form></div>".
                         "<div class='answerTxt'><h3>".$userName."</h3>"."<p>".$rowQ["raw_data"]."</p></div>"
                         ."</div>";
                     }
