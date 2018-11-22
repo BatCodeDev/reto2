@@ -13,13 +13,21 @@ $(window).resize(function(){
 });
 
 function request2server(idForm, target) {
+    //debugger;
     var form_data = $("#"+idForm).serialize();
+    //debugger;
     $.ajax({
         url: target,
         data: form_data,
         type: "POST",
         success: function (data) {
+            //debugger;
+            var data = data.replace(/\n|\r/g, "");
             console.log(data);
+            if(data.charAt(0)=="{"){
+                var jsn = JSON.parse(data);
+                data = "json";
+            }
             switch (data){
                 case "success":
                     $("#errorRegistry").html("Correcto");
@@ -32,6 +40,11 @@ function request2server(idForm, target) {
                     break;
                 case "errorUpdate":
                     $("#errorRegistry").html("Datos introducidos incorrectos");
+                    break;
+                case "json":
+                    if(jsn.reload != ""){
+                        $("#"+jsn.reload).load(document.URL + " #"+jsn.reload);
+                    }
                     break;
             }
         },
