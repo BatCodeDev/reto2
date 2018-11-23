@@ -120,6 +120,11 @@ p{
     color: #FC3667;
     text-align: center;
 }
+#about{
+    position: absolute;
+    bottom: 0;
+    margin: 2% 2%;
+}
 
 footer{
     grid-column: 1 / 11;        
@@ -136,7 +141,7 @@ footer{
     }
     #questions{
         display: flex;
-        width: 80%;
+        width: 90%;
     }
 }
 @media (max-width: 1000px){
