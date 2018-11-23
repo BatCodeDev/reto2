@@ -2,6 +2,7 @@
 <div id="fullfade" onclick="toggleNavbar();"></div>
 <nav id="navBar">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Nanum+Gothic" rel="stylesheet">
+    <link rel="stylesheet" href="css/sideBar.css">
     <div id="navBarHeader">
         <div id="navBarHeaderTxt">
             <h2>MENÚ</h2>
