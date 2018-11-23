@@ -86,14 +86,43 @@
             padding-top: 0px;
             margin: 5px 0px;
             width: 100%;
-
+            display: flex;
         }
-
+        .votes{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            width: 20% !important;
+            border: 0 !important;
+        }
+        .votes>div{
+            width: 100% !important;
+            margin-bottom: 0 !important;
+        }
+        .answerTxt{
+            display: flex;
+            flex-direction: column;
+            width: 80% !important;
+            border: 0 !important;
+        }
         #answerDiv div *{
             margin-top: 0px;
 
         }
-
+        #urls a
+        {
+            color:indianred;
+            text-decoration:none;
+        }
+        #urls a:hover
+        {
+            color:aqua;
+        }
+        @media (min-width: 800px){
+            .votes{
+                width: 10% !important;
+            }
+        }
 
     </style>
 </head>
@@ -110,13 +139,75 @@
             include_once "server/categoryDB.php";
             include_once "server/answerDB.php";
             include_once "server/profileDB.php";
+            include_once "server/archiveDB.php";
+            include_once 'archiveUpload.php';
             $userImg = "img/alexddo.png";
         ?>
         <div id="content">
-            <form method="POST">
+            <?php
+            /*
+            if(!isset($_GET["idQ"]))
+            {
+                ?>
+                <h3>Subir archivos</h3>
+                <form id="archiveForm"  enctype="multipart/form-data" onsubmit="return request2server2(this, './archiveUpload.php')">
+                    <input type="file" name="file2">
+                    <button type="reset">Descartar</button>
+                    <button type="submit" name="send">Aceptar</button>
+                </form>
+                <div id="errorUpload">
+
+                </div>
+                <?php
+            }
+            ?>
+            */
+            ?>
+            <form id="questionForm" method="POST" enctype="multipart/form-data" onsubmit="return request2server2(this, './archiveUpload.php')">
                 <div class="divQuestion">
                     <h3>Cabecera</h3><input type="text" id="header" name="header" required maxlength="25">
                     <h3>Cuerpo</h3><textarea onkeyup="textAreaAdjust(this)" style="overflow:hidden" id="rawData" maxlength="255" name="rawData" required></textarea>
+                    <?php
+                    /*
+                     *onsubmit="return request2server2(this.id, 'archiveUpload.php')"
+                     *
+                     */
+
+                    if(isset($_GET["idQ"]))
+                    {
+                        ?>
+                    <div id="urls">
+                        <h3>Link</h3>
+                        <?php
+                            $question=getLastQuestion();
+                            $question2=$question->id;
+                            $archives=getAllByQuestion($question2);
+                            foreach ($archives as $key=>$value)
+                            {
+                                $url= substr($value['url'],2);
+                                ?>
+                                <a href="<?php echo $url ?>"><?php echo $url?> </a><br>
+                                <?php
+                            }
+                        ?>
+                    </div>
+                    <?php
+                    }
+                    else
+                    {
+                        ?>
+                        <h3>Subir archivo</h3>
+
+                            <input type="file" name="file2">
+
+
+                        <div id="errorUpload">
+
+                        </div>
+                        <?php
+
+                    }
+                    ?>
                     <h3>Categoría</h3><input type="text" id="category" name="category" placeholder="Escribe o selecciona catergoría" maxlength="7">
                     <select id="selectCategory" onchange="selectCategoryF()">
                         <option selected>---</option>
@@ -132,7 +223,10 @@
                 </div>
             </form>
 
+
             <?php
+
+
             if (isset($_POST["subQuestion"])) {
                 $idCategory = selectIdCategory($_POST["category"]);
                 if ($idCategory == null) {
@@ -140,6 +234,13 @@
                     $idCategory = selectIdCategory($_POST["category"]);
                 }
                 insertQuestion($_POST["header"], $_POST["rawData"], date("m-d-Y H:i:s"), $_SESSION["user"]["userId"], $idCategory);
+            }
+
+            if (isset($_POST["subQuestion"])) {
+                $question=getLastQuestion();
+                $question2=$question->id;
+                //var_dump(die($question2));
+                update($question2);
             }
 
             if (isset($_POST["subAnswer"])) {
@@ -182,13 +283,32 @@
                     echo "</form>";
                     $resulF = selectRecientAnswer($_GET["idQ"]);
                     foreach ($resulF as $rowQ){
+                        $votesAns = selectCountFavouritesAns($rowQ["id"]);
                         $userName = selectNameProfile($rowQ["id_profile"]);
-                        echo "<div>".
-                        "<h3>".$userName."</h3>"."<p>".$rowQ["raw_data"]."</p>"
+                        $usrId = null;
+                        if(isset($_SESSION['user'])){
+                            $usrId = $_SESSION['user']["userId"];
+                        }
+                        $favAns = selectFavouriteUserAnswer($usrId, $rowQ["id"]);
+                        if($favAns == 1){
+                            $target = '"server/favouriteAnswer.php?action=unfav"';
+                            $butt = "Quitar";
+                        }else{
+                            $target = '"server/favouriteAnswer.php?action=fav"';
+                            $butt = "Votar";
+                        }
+                        echo "<div><div id='v".$rowQ['id']."' class='votes'>Votos<br>".$votesAns."<br><form id='".$rowQ['id']."favouriteAnswerForm' 
+                            onsubmit='return request2server(this.id,$target)'>
+                            <input type='hidden' name='ansId' value='".$rowQ['id']."'>
+                            <input type='hidden' name='profId' value='".$usrId."'>
+                            <input type='hidden' name='divId' value='v".$rowQ["id"]."'>
+                            <button type='submit'>".$butt."</button></form></div>".
+                        "<div class='answerTxt'><h3>".$userName."</h3>"."<p>".$rowQ["raw_data"]."</p></div>"
                         ."</div>";
                     }
                 }
             ?>
+
         </div>
         <?php
             if (isset($_GET["idQ"])) {
@@ -204,11 +324,8 @@
 
                 }
             }
-
-            
-
-
         ?>
+
     </div>
 </body>
     <script type="text/javascript">

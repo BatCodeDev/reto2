@@ -83,7 +83,6 @@
             include_once "server/questionDB.php";
             include_once "server/favouriteDB.php";
             include_once "server/categoryDB.php";
-            $userImg = "img/alexddo.png";
         ?>
         <div id="content">
             <div class="divCategory">

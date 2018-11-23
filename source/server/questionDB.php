@@ -84,6 +84,21 @@ function selectOwnerOfQuestion($data){
     return $resul["id_profile"];
 }
 
+
+function getLastQuestion()
+{
+    $conexion = connect();
+    $consulta = $conexion->prepare('
+            SELECT max(id) as id
+            FROM question
+            ');
+    $consulta->execute();
+    $question = $consulta->fetchObject();
+
+    $conexion=null;
+    return $question;
+
+}
 	/*
 
 

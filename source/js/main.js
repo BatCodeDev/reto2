@@ -13,13 +13,21 @@ $(window).resize(function(){
 });
 
 function request2server(idForm, target) {
+    //debugger;
     var form_data = $("#"+idForm).serialize();
+    //debugger;
     $.ajax({
         url: target,
         data: form_data,
         type: "POST",
         success: function (data) {
+            //debugger;
+            var data = data.replace(/\n|\r/g, "");
             console.log(data);
+            if(data.charAt(0)=="{"){
+                var jsn = JSON.parse(data);
+                data = "json";
+            }
             switch (data){
                 case "success":
                     $("#errorRegistry").html("Correcto");
@@ -33,6 +41,11 @@ function request2server(idForm, target) {
                 case "errorUpdate":
                     $("#errorRegistry").html("Datos introducidos incorrectos");
                     break;
+                case "json":
+                    if(jsn.reload != ""){
+                        $("#"+jsn.reload).load(document.URL + " #"+jsn.reload);
+                    }
+                    break;
             }
         },
         error: function () {
@@ -41,6 +54,21 @@ function request2server(idForm, target) {
     });
     return false;
 }
+
+function request2server2(idForm, target) {
+    var imagen = new FormData($('#'+idForm)[0]);
+
+    $.ajax({
+        type:'post',
+        url:target,
+        data:imagen,
+        contentType:false,
+        processData:false
+
+    })
+    return false;
+}
+
 function toggleNavbar() {
     toggle($('#navBar'), 'toggle');
     toggle($('#divNavTrigger'), 'trigger');
