@@ -1,0 +1,56 @@
+#navBarContent{
+    height: 90%;
+    background: #FC3667;
+}
+#navBarHeaderTxt{
+    width: 70%;    
+    height: 100%;
+    padding: 10% 20%;
+}
+#navBarContent a{
+    display: block;
+    float: left;
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    padding: 2% 0%;
+    font-family: 'Nanum Gothic', sans-serif;
+    border-bottom: 1px solid white;
+}
+#navBarContent img{
+    height: auto;
+    float: left;
+    height: 60px;
+    width: 60px;
+    margin-right: 10px;
+}
+#userImg{
+    border-radius: 50%;
+}
+.navLinks{        
+    width: 100%;
+    height: auto;
+    padding: .5em;
+
+}
+#navBarContent #userProfile{ 
+    height: 90px;
+    border-bottom: 1px solid white;
+}
+#navBarContent #userProfile #userProfileLink{ 
+    margin-top: 15px; 
+}
+
+
+#navBarContent #userProfile a{ 
+    border: none;
+}
+
+#navBarContent #closeSession{
+    text-align: center;
+    padding-top: 100px;
+}
+h2{
+    margin: 0;
+    font-family: 'Josefin Sans', sans-serif;
+}
