@@ -57,5 +57,8 @@
             echo '<form id="closeSession" action="logOut.php"><button type="submit">Cerrar Sesión</button></form>';
             }
         ?>
+        <div id="about">
+            <a href="https://github.com/BatCodeDev/reto2">BatCode</a>
+        </div>
     </div>
 </nav>
