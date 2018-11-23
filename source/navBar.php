@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="css/navBar.css">
 <header>
     <div id="divLogo">
         <img src="img/logo.png" onclick="window.location.href='index.php'">

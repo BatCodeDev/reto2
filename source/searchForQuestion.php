@@ -12,7 +12,6 @@
 </head>
     <meta name="viewport" content="width=device-width">
     <script src="js/jquery.js"></script>
-    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/foundQuestion.css">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Nanum+Gothic" rel="stylesheet">
