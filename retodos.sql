@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-11-2018 a las 10:34:04
--- Versión del servidor: 10.1.26-MariaDB
--- Versión de PHP: 7.1.9
+-- Tiempo de generación: 23-11-2018 a las 10:28:29
+-- Versión del servidor: 10.1.35-MariaDB
+-- Versión de PHP: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -60,7 +60,19 @@ INSERT INTO `answer` (`id`, `raw_data`, `dateA`, `id_profile`, `id_question`) VA
 (27, 'yeyasda', '11-14-2018 09:52:28', 2, 14),
 (28, 'dajsd', '11-14-2018 09:52:41', 2, 15),
 (29, 'kfjd', '11-14-2018 09:53:09', 2, 15),
-(30, 'eyye', '11-14-2018 09:53:36', 2, 15);
+(30, 'eyye', '11-14-2018 09:53:36', 2, 15),
+(32, 'me cago en tus muertos', '11-14-2018 10:40:03', 5, 15),
+(33, 'hola', '11-15-2018 08:54:27', 5, 15),
+(34, 'tra tra', '11-15-2018 08:54:38', 5, 15),
+(35, 'hola hola', '11-15-2018 08:55:00', 5, 15),
+(36, 'hola', '11-15-2018 11:49:05', 5, 19),
+(37, 'de', '11-21-2018 09:05:36', 5, 20),
+(38, 'de', '11-21-2018 09:07:05', 5, 20),
+(39, 'de', '11-21-2018 09:07:57', 5, 20),
+(40, 'rr', '11-21-2018 10:38:04', 5, 20),
+(41, 'rr', '11-21-2018 10:38:10', 5, 20),
+(42, 'rr', '11-21-2018 10:38:57', 5, 20),
+(43, 'hola buenas', '11-22-2018 10:47:13', 5, 2);
 
 -- --------------------------------------------------------
 
@@ -70,9 +82,17 @@ INSERT INTO `answer` (`id`, `raw_data`, `dateA`, `id_profile`, `id_question`) VA
 
 CREATE TABLE `archive` (
   `id` int(11) NOT NULL,
-  `url` varchar(20) NOT NULL,
-  `id_question` int(11) NOT NULL
+  `url` varchar(255) NOT NULL,
+  `id_question` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `archive`
+--
+
+INSERT INTO `archive` (`id`, `url`, `id_question`) VALUES
+(2, './img/archive/5bf67acd30084.png', 22),
+(3, './img/archive/5bf7bcb6e18ab.png', 23);
 
 -- --------------------------------------------------------
 
@@ -97,7 +117,9 @@ INSERT INTO `category` (`id`, `name`) VALUES
 (5, 'ghchg'),
 (6, 'JFDN'),
 (7, 'me muero'),
-(8, 'yeu');
+(8, 'yeu'),
+(9, ''),
+(10, 'god');
 
 -- --------------------------------------------------------
 
@@ -111,6 +133,16 @@ CREATE TABLE `favourite` (
   `type` varchar(1) NOT NULL,
   `id_answer` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `favourite`
+--
+
+INSERT INTO `favourite` (`id_profile`, `id_question`, `type`, `id_answer`) VALUES
+(3, NULL, 'A', 42),
+(3, NULL, 'A', 43),
+(2, NULL, 'A', 43),
+(2, 2, 'Q', NULL);
 
 -- --------------------------------------------------------
 
@@ -135,7 +167,10 @@ CREATE TABLE `profile` (
 INSERT INTO `profile` (`id`, `photo`, `name`, `surname`, `email`, `user`, `pass`) VALUES
 (2, 'img/userImgs/admin.png', 'admin', 'admin', 'admin@gmail.com', 'admin', 'admin'),
 (3, '', 'user', 'user', 'user@gmail.com', 'user', 'user'),
-(4, '', 'admino', 'admino', 'admino@gmail.com', 'admino', 'admino');
+(4, '', 'admino', 'admino', 'admino@gmail.com', 'admino', 'admino'),
+(5, '', 'alejandro', 'de otalora', 'alexddo122@gmail.com', 'alexddo', 'alexddo'),
+(6, '', 'alejandro', 'de otalora', 'alexaddo122@gmail.com', 'hola', 'hola'),
+(7, '', 'alejandro', 'de otalora', 'alexdddsvo122@gmail.com', 'hi', 'hi');
 
 -- --------------------------------------------------------
 
@@ -145,7 +180,7 @@ INSERT INTO `profile` (`id`, `photo`, `name`, `surname`, `email`, `user`, `pass`
 
 CREATE TABLE `question` (
   `id` int(11) NOT NULL,
-  `header` varchar(20) NOT NULL,
+  `header` varchar(100) NOT NULL,
   `raw_data` varchar(255) NOT NULL,
   `dateQ` varchar(20) NOT NULL,
   `id_profile` int(11) NOT NULL,
@@ -170,7 +205,15 @@ INSERT INTO `question` (`id`, `header`, `raw_data`, `dateQ`, `id_profile`, `id_c
 (12, 'hfgf', 'hfgf', '11-13-2018 10:30:59', 2, 5),
 (13, 'trolleo', 'FDJ', '11-13-2018 10:32:46', 2, 6),
 (14, 'tengo una pregunta', 'AYUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUDA', '11-13-2018 18:47:48', 4, 7),
-(15, 'preguntita', 'ju', '11-14-2018 09:18:04', 2, 8);
+(15, 'preguntita', 'ju', '11-14-2018 09:18:04', 2, 8),
+(16, 'test uno', 'sdbrberbeb', '11-15-2018 10:53:13', 5, 3),
+(17, 'test dos', 'dsberbrbrt', '11-15-2018 10:53:22', 5, 8),
+(18, 'test tres', 'be ebeerb', '11-15-2018 10:53:35', 5, 8),
+(19, 'test cuatro', 'adkvwrbirbr', '11-15-2018 10:53:43', 5, 9),
+(20, 'test cinco', 'vaefverbe', '11-15-2018 10:53:56', 5, 4),
+(21, 'test img', 'hola buenas como estamos', '11-22-2018 10:44:04', 5, 10),
+(22, 'test img 2', 'hoa buenas como estamos', '11-22-2018 10:45:49', 5, 10),
+(23, 'test img', 'hola buenas', '11-23-2018 09:39:18', 2, 1);
 
 --
 -- Índices para tablas volcadas
@@ -227,31 +270,31 @@ ALTER TABLE `question`
 -- AUTO_INCREMENT de la tabla `answer`
 --
 ALTER TABLE `answer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT de la tabla `archive`
 --
 ALTER TABLE `archive`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `question`
 --
 ALTER TABLE `question`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Restricciones para tablas volcadas
