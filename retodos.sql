@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-11-2018 a las 10:28:29
+-- Tiempo de generación: 23-11-2018 a las 13:00:01
 -- Versión del servidor: 10.1.35-MariaDB
 -- Versión de PHP: 7.2.9
 
@@ -36,44 +36,6 @@ CREATE TABLE `answer` (
   `id_question` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `answer`
---
-
-INSERT INTO `answer` (`id`, `raw_data`, `dateA`, `id_profile`, `id_question`) VALUES
-(11, 'ni idea', '11-13-2018 18:35:39', 2, 13),
-(12, 'jaja', '11-13-2018 18:35:42', 2, 13),
-(13, 'xd', '11-13-2018 18:35:44', 2, 13),
-(14, 'lol', '11-13-2018 18:36:00', 2, 13),
-(15, 'jo, que pena', '11-13-2018 18:48:16', 2, 14),
-(16, 'xd', '11-13-2018 18:49:06', 2, 14),
-(17, 'pene', '11-14-2018 08:21:33', 2, 14),
-(18, 'yey', '11-14-2018 09:22:17', 2, 14),
-(19, 'xd', '11-14-2018 09:33:52', 2, 15),
-(20, 'lol', '11-14-2018 09:33:58', 2, 15),
-(21, 'mentira', '11-14-2018 09:34:11', 2, 15),
-(22, 'jiju', '11-14-2018 09:34:29', 2, 15),
-(23, 'lol', '11-14-2018 09:34:38', 2, 15),
-(24, 'daÃ§', '11-14-2018 09:51:05', 2, 14),
-(25, 'se', '11-14-2018 09:51:12', 2, 14),
-(26, 'yeyasda', '11-14-2018 09:51:48', 2, 14),
-(27, 'yeyasda', '11-14-2018 09:52:28', 2, 14),
-(28, 'dajsd', '11-14-2018 09:52:41', 2, 15),
-(29, 'kfjd', '11-14-2018 09:53:09', 2, 15),
-(30, 'eyye', '11-14-2018 09:53:36', 2, 15),
-(32, 'me cago en tus muertos', '11-14-2018 10:40:03', 5, 15),
-(33, 'hola', '11-15-2018 08:54:27', 5, 15),
-(34, 'tra tra', '11-15-2018 08:54:38', 5, 15),
-(35, 'hola hola', '11-15-2018 08:55:00', 5, 15),
-(36, 'hola', '11-15-2018 11:49:05', 5, 19),
-(37, 'de', '11-21-2018 09:05:36', 5, 20),
-(38, 'de', '11-21-2018 09:07:05', 5, 20),
-(39, 'de', '11-21-2018 09:07:57', 5, 20),
-(40, 'rr', '11-21-2018 10:38:04', 5, 20),
-(41, 'rr', '11-21-2018 10:38:10', 5, 20),
-(42, 'rr', '11-21-2018 10:38:57', 5, 20),
-(43, 'hola buenas', '11-22-2018 10:47:13', 5, 2);
-
 -- --------------------------------------------------------
 
 --
@@ -86,14 +48,6 @@ CREATE TABLE `archive` (
   `id_question` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `archive`
---
-
-INSERT INTO `archive` (`id`, `url`, `id_question`) VALUES
-(2, './img/archive/5bf67acd30084.png', 22),
-(3, './img/archive/5bf7bcb6e18ab.png', 23);
-
 -- --------------------------------------------------------
 
 --
@@ -104,22 +58,6 @@ CREATE TABLE `category` (
   `id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `category`
---
-
-INSERT INTO `category` (`id`, `name`) VALUES
-(1, 'java'),
-(2, 'eskere'),
-(3, 'youh'),
-(4, 'llorar'),
-(5, 'ghchg'),
-(6, 'JFDN'),
-(7, 'me muero'),
-(8, 'yeu'),
-(9, ''),
-(10, 'god');
 
 -- --------------------------------------------------------
 
@@ -133,16 +71,6 @@ CREATE TABLE `favourite` (
   `type` varchar(1) NOT NULL,
   `id_answer` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `favourite`
---
-
-INSERT INTO `favourite` (`id_profile`, `id_question`, `type`, `id_answer`) VALUES
-(3, NULL, 'A', 42),
-(3, NULL, 'A', 43),
-(2, NULL, 'A', 43),
-(2, 2, 'Q', NULL);
 
 -- --------------------------------------------------------
 
@@ -160,18 +88,6 @@ CREATE TABLE `profile` (
   `pass` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `profile`
---
-
-INSERT INTO `profile` (`id`, `photo`, `name`, `surname`, `email`, `user`, `pass`) VALUES
-(2, 'img/userImgs/admin.png', 'admin', 'admin', 'admin@gmail.com', 'admin', 'admin'),
-(3, '', 'user', 'user', 'user@gmail.com', 'user', 'user'),
-(4, '', 'admino', 'admino', 'admino@gmail.com', 'admino', 'admino'),
-(5, '', 'alejandro', 'de otalora', 'alexddo122@gmail.com', 'alexddo', 'alexddo'),
-(6, '', 'alejandro', 'de otalora', 'alexaddo122@gmail.com', 'hola', 'hola'),
-(7, '', 'alejandro', 'de otalora', 'alexdddsvo122@gmail.com', 'hi', 'hi');
-
 -- --------------------------------------------------------
 
 --
@@ -186,34 +102,6 @@ CREATE TABLE `question` (
   `id_profile` int(11) NOT NULL,
   `id_category` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `question`
---
-
-INSERT INTO `question` (`id`, `header`, `raw_data`, `dateQ`, `id_profile`, `id_category`) VALUES
-(2, 'juju', 'jiji', '11-12-2018 13:59:22', 2, 1),
-(3, 'juju', 'jiji', '11-12-2018 14:01:04', 2, 1),
-(4, 'yey', 'yuy', '11-12-2018 14:01:09', 2, 1),
-(5, 'userrr', 'userr', '11-12-2018 14:01:54', 3, 1),
-(6, 'prueba', 'prueba', '11-13-2018 09:22:45', 2, 1),
-(7, 'eskere', 'eskere', '11-13-2018 09:27:02', 2, 2),
-(8, 'yey', 'eyye', '11-13-2018 10:23:17', 2, 3),
-(9, 'suspenso', 'waaaaa', '11-13-2018 10:28:58', 2, 4),
-(10, 'suspenso', 'waaaaa', '11-13-2018 10:29:05', 2, 4),
-(11, 'hfgf', 'hfgf', '11-13-2018 10:30:53', 2, 5),
-(12, 'hfgf', 'hfgf', '11-13-2018 10:30:59', 2, 5),
-(13, 'trolleo', 'FDJ', '11-13-2018 10:32:46', 2, 6),
-(14, 'tengo una pregunta', 'AYUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUDA', '11-13-2018 18:47:48', 4, 7),
-(15, 'preguntita', 'ju', '11-14-2018 09:18:04', 2, 8),
-(16, 'test uno', 'sdbrberbeb', '11-15-2018 10:53:13', 5, 3),
-(17, 'test dos', 'dsberbrbrt', '11-15-2018 10:53:22', 5, 8),
-(18, 'test tres', 'be ebeerb', '11-15-2018 10:53:35', 5, 8),
-(19, 'test cuatro', 'adkvwrbirbr', '11-15-2018 10:53:43', 5, 9),
-(20, 'test cinco', 'vaefverbe', '11-15-2018 10:53:56', 5, 4),
-(21, 'test img', 'hola buenas como estamos', '11-22-2018 10:44:04', 5, 10),
-(22, 'test img 2', 'hoa buenas como estamos', '11-22-2018 10:45:49', 5, 10),
-(23, 'test img', 'hola buenas', '11-23-2018 09:39:18', 2, 1);
 
 --
 -- Índices para tablas volcadas
@@ -294,7 +182,7 @@ ALTER TABLE `profile`
 -- AUTO_INCREMENT de la tabla `question`
 --
 ALTER TABLE `question`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Restricciones para tablas volcadas
