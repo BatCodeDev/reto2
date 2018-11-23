@@ -285,7 +285,11 @@
                     foreach ($resulF as $rowQ){
                         $votesAns = selectCountFavouritesAns($rowQ["id"]);
                         $userName = selectNameProfile($rowQ["id_profile"]);
-                        $favAns = selectFavouriteUserAnswer($_SESSION['user']["userId"], $rowQ["id"]);
+                        $usrId = null;
+                        if(isset($_SESSION['user'])){
+                            $usrId = $_SESSION['user']["userId"];
+                        }
+                        $favAns = selectFavouriteUserAnswer($usrId, $rowQ["id"]);
                         if($favAns == 1){
                             $target = '"server/favouriteAnswer.php?action=unfav"';
                             $butt = "Quitar";
@@ -296,7 +300,7 @@
                         echo "<div><div id='v".$rowQ['id']."' class='votes'>Votos<br>".$votesAns."<br><form id='".$rowQ['id']."favouriteAnswerForm' 
                             onsubmit='return request2server(this.id,$target)'>
                             <input type='hidden' name='ansId' value='".$rowQ['id']."'>
-                            <input type='hidden' name='profId' value='".$_SESSION['user']["userId"]."'>
+                            <input type='hidden' name='profId' value='".$usrId."'>
                             <input type='hidden' name='divId' value='v".$rowQ["id"]."'>
                             <button type='submit'>".$butt."</button></form></div>".
                         "<div class='answerTxt'><h3>".$userName."</h3>"."<p>".$rowQ["raw_data"]."</p></div>"

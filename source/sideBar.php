@@ -42,16 +42,13 @@
         }
         ?>
         <div class="navLinks">
-            <!--<img src="img/logo.png"">-->
-            <a href="question.php">FORMULAR UNA PREGUNTA</a>
+            <a href="<?php echo isset($_SESSION['user'])? 'question.php':'loginRegistry.php';?>">FORMULAR UNA PREGUNTA</a>
         </div>
         <div class="navLinks">
-            <!--<img src="img/history.png"">-->
-            <a href="searchForQuestion.php?history=true">MIS PREGUNTAS</a>
+            <a href="<?php echo isset($_SESSION['user'])? 'searchForQuestion.php?history=true':'loginRegistry.php';?>">MIS PREGUNTAS</a>
         </div>
         <div class="navLinks">
-            <!--<img src="img/logo.png"">-->
-            <a href="searchForQuestion.php?favQ=true">MIS FAVORITOS</a>
+            <a href="<?php echo isset($_SESSION['user'])? 'searchForQuestion.php?favQ=true':'loginRegistry.php';?>">MIS FAVORITOS</a>
         </div>
         <br>
         <?php
